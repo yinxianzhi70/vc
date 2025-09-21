@@ -1,0 +1,12 @@
+__pycache__/
+venv/
+.DS_Store
+*.log
+*.xlsx
+~$*.xlsx
+.env
+download/
+result/
+logs/
+image_cache/
+queue/
