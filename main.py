@@ -79,27 +79,36 @@ if __name__ == '__main__':
     for i, (profile_dir, profile_name) in enumerate(profiles, 1):
         print(f"{i}. {profile_name} ({profile_dir})")
         
-    # 默认选择第3个配置文件（Profile 2）
-    default_profile_index = 2  # 索引从0开始，所以2代表第3个配置文件
+    # 优先选择trivesa.it配置文件
+    selected_profile = None
     
     try:
-        # 如果存在第3个配置文件，直接使用它
-        if default_profile_index < len(profiles):
-            selected_profile = profiles[default_profile_index][0]
-            print(f"\n自动选择配置文件: {profiles[default_profile_index][1]} ({selected_profile})")
-        else:
-            # 如果第3个配置文件不存在，则提示用户选择
-            while True:
-                try:
-                    choice = input("\n未找到默认配置文件，请选择要使用的Chrome配置文件 (输入数字): ")
-                    profile_index = int(choice) - 1
-                    if 0 <= profile_index < len(profiles):
-                        selected_profile = profiles[profile_index][0]
-                        break
-                    else:
-                        print("无效的选择，请重试")
-                except ValueError:
-                    print("请输入有效的数字")
+        # 首先查找trivesa.it配置文件
+        for i, (profile_dir, profile_name) in enumerate(profiles):
+            if 'trivesa.it' in profile_name.lower() or 'profile 7' in profile_dir.lower():
+                selected_profile = profile_dir
+                print(f"\n自动选择配置文件: {profile_name} ({profile_dir}) - 用于Vestiaire Collective登录")
+                break
+        
+        # 如果没有找到trivesa.it配置文件，则使用默认的第3个配置文件
+        if selected_profile is None:
+            default_profile_index = 2  # 索引从0开始，所以2代表第3个配置文件
+            if default_profile_index < len(profiles):
+                selected_profile = profiles[default_profile_index][0]
+                print(f"\n未找到trivesa.it配置文件，使用默认配置文件: {profiles[default_profile_index][1]} ({selected_profile})")
+            else:
+                # 如果第3个配置文件也不存在，则提示用户选择
+                while True:
+                    try:
+                        choice = input("\n请选择要使用的Chrome配置文件 (输入数字): ")
+                        profile_index = int(choice) - 1
+                        if 0 <= profile_index < len(profiles):
+                            selected_profile = profiles[profile_index][0]
+                            break
+                        else:
+                            print("无效的选择，请重试")
+                    except ValueError:
+                        print("请输入有效的数字")
     except Exception as e:
         # 如果出现任何错误，使用第一个配置文件作为后备选项
         selected_profile = profiles[0][0]
@@ -124,7 +133,7 @@ if __name__ == '__main__':
         logger.critical(f'Failed to load the Excel file: {e}')
         exit(1)
 
-    # 检查并关闭已经运行的Chrome实例
+    # 关闭现有的Chrome实例
     try:
         if sys.platform == 'darwin':  # macOS
             subprocess.run(['pkill', '-f', 'Google Chrome'])
@@ -133,19 +142,9 @@ if __name__ == '__main__':
         elif sys.platform == 'linux':  # Linux
             subprocess.run(['pkill', '-f', 'chrome'])
         logger.info("已关闭现有的Chrome实例")
+        time.sleep(2)  # 等待进程完全关闭
     except Exception as e:
         logger.warning(f"关闭Chrome实例时出错: {e}")
-
-    # 在创建Chrome配置之前检查端口
-    debug_port = 9223  # 使用不同的调试端口
-    if is_port_in_use(debug_port):
-        logger.warning(f"端口 {debug_port} 已被占用，尝试使用其他端口")
-        debug_port = 9224  # 尝试使用另一个端口
-        if is_port_in_use(debug_port):
-            logger.error("无法找到可用的调试端口")
-            raise Exception("无法找到可用的调试端口")
-
-    logger.info(f"使用调试端口: {debug_port}")
 
     # 创建Chrome配置
     co = ChromiumOptions()
@@ -178,47 +177,43 @@ if __name__ == '__main__':
 
     # 基本设置
     co.set_argument(f'--profile-directory={selected_profile}')  # 使用选择的配置文件
-    co.set_argument(f'--remote-debugging-port={debug_port}')  # 设置调试端口
+    co.set_argument('--remote-debugging-port=9222')  # 设置调试端口
     co.set_argument('--no-first-run')  # 跳过首次运行设置
     co.set_argument('--no-default-browser-check')  # 跳过默认浏览器检查
-    co.set_argument('--disable-gpu')  # 禁用GPU加速
+    co.set_argument('--disable-web-security')  # 禁用网页安全限制
+    co.set_argument('--allow-running-insecure-content')  # 允许运行不安全内容
+    co.set_argument('--ignore-certificate-errors')  # 忽略证书错误
     co.set_argument('--no-sandbox')  # 禁用沙盒
     co.set_argument('--disable-dev-shm-usage')  # 禁用/dev/shm使用
-    co.set_argument('--disable-setuid-sandbox')  # 禁用setuid沙盒
+    co.set_argument('--disable-gpu')  # 禁用GPU加速
     co.set_argument('--disable-extensions')  # 禁用扩展
     co.set_argument('--disable-popup-blocking')  # 禁用弹窗拦截
     co.set_argument('--disable-notifications')  # 禁用通知
     co.set_argument('--disable-infobars')  # 禁用信息栏
-    co.set_argument('--disable-web-security')  # 禁用网页安全限制
-    co.set_argument('--allow-running-insecure-content')  # 允许运行不安全内容
-    co.set_argument('--ignore-certificate-errors')  # 忽略证书错误
-    co.set_argument('--disable-features=IsolateOrigins,site-per-process')  # 禁用站点隔离
-    co.set_argument('--disable-site-isolation-trials')  # 禁用站点隔离试验
-    co.set_argument('--disable-blink-features=AutomationControlled')  # 禁用自动化控制检测
-    
-    # 模拟真实浏览器
+    co.set_argument('--disable-features=VizDisplayCompositor')  # 禁用某些功能
     co.set_argument('--window-size=1920,1080')  # 设置窗口大小
-    co.set_argument('--start-maximized')  # 最大化窗口
-    co.set_argument('--disable-blink-features=AutomationControlled')  # 禁用自动化控制检测
-    co.set_argument('--disable-features=IsolateOrigins,site-per-process')  # 禁用站点隔离
-    co.set_argument('--disable-site-isolation-trials')  # 禁用站点隔离试验
-    
-    # 网络设置
-    co.set_argument('--disable-background-networking')  # 禁用后台网络
-    co.set_argument('--disable-background-timer-throttling')  # 禁用后台定时器限制
-    co.set_argument('--disable-backgrounding-occluded-windows')  # 禁用后台窗口遮挡
-    co.set_argument('--disable-renderer-backgrounding')  # 禁用渲染器后台处理
-    
-    # 其他优化
-    co.set_argument('--disable-translate')  # 禁用翻译
-    co.set_argument('--disable-sync')  # 禁用同步
-    co.set_argument('--disable-default-apps')  # 禁用默认应用
-    co.set_argument('--mute-audio')  # 静音
 
-    # 创建浏览器页面
-    page = ChromiumPage(co)
-    tab = page.get_tab()
-    logger.info("使用Chrome个人资料创建浏览器页面成功")
+    logger.info(f"使用Chrome配置文件: {selected_profile}")
+
+    try:
+        # 创建浏览器页面
+        page = ChromiumPage(co)
+        tab = page.get_tab()
+        logger.info("Chrome浏览器启动成功")
+    except Exception as e:
+        logger.error(f"Chrome启动失败: {e}")
+        logger.info("尝试使用默认配置启动Chrome...")
+        
+        # 使用更简单的配置重试
+        co_simple = ChromiumOptions()
+        co_simple.set_browser_path(chrome_path)
+        co_simple.set_argument(f'--profile-directory={selected_profile}')
+        co_simple.set_argument('--no-sandbox')
+        co_simple.set_argument('--disable-dev-shm-usage')
+        
+        page = ChromiumPage(co_simple)
+        tab = page.get_tab()
+        logger.info("使用简化配置启动Chrome成功")
 
     # 添加随机延迟
     delay = random.uniform(3, 7)
@@ -242,6 +237,14 @@ if __name__ == '__main__':
             raise Exception("页面加载失败")
             
         logger.info(f"页面标题: {tab.title}")
+        
+        # 执行登录
+        logger.info("开始登录流程")
+        login_success = vestiaire.login(tab, user, password)
+        if not login_success:
+            logger.error("登录失败，程序退出")
+            raise Exception("登录失败")
+        logger.info("登录成功")
         
         # 点击"Sell an item"按钮
         sell_button_selectors = [

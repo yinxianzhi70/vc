@@ -1,0 +1,1540 @@
+🎯 Odoo图片导入使用说明（智能主图优化版）
+==================================================
+
+✨ 本次处理已自动优化主图顺序！
+📋 第一张图片已设置为最佳主图，可直接用于电商平台
+
+📝 导入步骤（适配 product_image_manager 模块）:
+1. 打开Odoo ERP系统
+2. 进入产品页面
+3. 找到对应的产品（使用产品编号搜索）
+4. 在产品表单中找到以下字段：
+   • '主图URL' 字段 -> 粘贴主图URL
+   • '展示图片URLs' 字段 -> 粘贴其他图片URLs（除主图外）
+5. 保存产品
+6. 点击'同步到eBay'按钮
+
+🔍 主图检测结果:
+--------------------------------------------------
+
+📦 产品: 802419 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 10 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_2.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802419%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802551 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 8 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_2.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802551%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802554 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 27 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_12.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_13.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_14.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_15.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_16.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_17.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_18.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_19.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_20.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_21.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_22.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_23.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_24.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_25.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_26.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_27.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_28.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_12.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_13.jpg
+  📷 附图10: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_14.jpg
+  📷 附图11: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_15.jpg
+  📷 附图12: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_16.jpg
+  📷 附图13: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_17.jpg
+  📷 附图14: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_18.jpg
+  📷 附图15: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_19.jpg
+  📷 附图16: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_20.jpg
+  📷 附图17: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_21.jpg
+  📷 附图18: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_22.jpg
+  📷 附图19: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_23.jpg
+  📷 附图20: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_24.jpg
+  📷 附图21: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_25.jpg
+  📷 附图22: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_26.jpg
+  📷 附图23: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_27.jpg
+  📷 附图24: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_28.jpg
+  📷 附图25: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_2.jpg
+  📷 附图26: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802554%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802555 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 9 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_2.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802555%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802556 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 12 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_12.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_13.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_12.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_13.jpg
+  📷 附图10: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_2.jpg
+  📷 附图11: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802556%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802557 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 9 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_2.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802557%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802558 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 10 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_2.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802558%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802559 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 10 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_2.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802559%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802561 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 11 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_12.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_12.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_2.jpg
+  📷 附图10: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802561%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802562 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 10 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_2.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802562%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802563 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 9 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_2.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802563%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802564 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 7 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_2.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802564%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802565 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 10 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_2.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802565%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802566 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 14 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_12.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_13.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_14.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_15.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_12.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_13.jpg
+  📷 附图10: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_14.jpg
+  📷 附图11: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_15.jpg
+  📷 附图12: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_2.jpg
+  📷 附图13: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802566%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802567 RENE WS04SH
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 11 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_12.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_12.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_2.jpg
+  📷 附图10: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802567%20RENE%20WS04SH_3.jpg
+
+
+📦 产品: 802947 RENE WS04SE
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 12 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_12.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_13.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_12.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_13.jpg
+  📷 附图10: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_2.jpg
+  📷 附图11: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802947%20RENE%20WS04SE_3.jpg
+
+
+📦 产品: 802948 RENE WS04SE
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_based
+📈 置信度: 70.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 8 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_2.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/802948%20RENE%20WS04SE_3.jpg
+
+
+📦 产品: 803409 RENE WS05ER
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_based
+📈 置信度: 70.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 10 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_2.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803409%20RENE%20WS05ER_3.jpg
+
+
+📦 产品: 803410 RENE WS05ER
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 10 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_2.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803410%20RENE%20WS05ER_3.jpg
+
+
+📦 产品: 803448 RENE WS05ER
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 11 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_12.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_12.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_2.jpg
+  📷 附图10: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803448%20RENE%20WS05ER_3.jpg
+
+
+📦 产品: 803451 RENE WS05ER
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 11 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_12.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_12.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_2.jpg
+  📷 附图10: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803451%20RENE%20WS05ER_3.jpg
+
+
+📦 产品: 803493 ALEXA WS05SA
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 20 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_12.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_13.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_14.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_15.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_16.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_17.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_18.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_19.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_20.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_21.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_12.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_13.jpg
+  📷 附图10: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_14.jpg
+  📷 附图11: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_15.jpg
+  📷 附图12: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_16.jpg
+  📷 附图13: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_17.jpg
+  📷 附图14: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_18.jpg
+  📷 附图15: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_19.jpg
+  📷 附图16: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_20.jpg
+  📷 附图17: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_21.jpg
+  📷 附图18: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_2.jpg
+  📷 附图19: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/803493%20ALEXA%20WS05SA_3.jpg
+
+
+📦 产品: 923451 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923451%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923452 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 7 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_2.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923452%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923453 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923453%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923454 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 7 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_2.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923454%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923455 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923455%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923456 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923456%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923457 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 7 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_2.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923457%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923458 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 13 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_9.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_10.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_11.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_12.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_13.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_14.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_9.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_10.jpg
+  📷 附图7: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_11.jpg
+  📷 附图8: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_12.jpg
+  📷 附图9: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_13.jpg
+  📷 附图10: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_14.jpg
+  📷 附图11: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_2.jpg
+  📷 附图12: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923458%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923459 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923459%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923460 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 7 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_2.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923460%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923461 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 5 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923461%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923461%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923461%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923461%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923461%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923461%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923461%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923461%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923461%20GUCCI%20WA05LU_2.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923461%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923478 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923478%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923479 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923479%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923480 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923480%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923481 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 5 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923481%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923481%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923481%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923481%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923481%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923481%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923481%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923481%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923481%20GUCCI%20WA05LU_2.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923481%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923482 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 无
+🎯 检测方法: insufficient_images
+📈 置信度: 10.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 1 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923482%20GUCCI%20WA05LU_1.jpg
+• 展示图片URLs字段: 无
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923482%20GUCCI%20WA05LU_1.jpg
+
+
+📦 产品: 923483 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 7 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_2.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923483%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923515 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923515%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923516 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923516%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923517 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 7 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_2.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923517%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923518 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 7 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_2.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923518%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923519 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 7 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_2.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923519%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923521 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923521%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923716 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923716%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923717 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 4 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923717%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923717%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923717%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923717%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923717%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923717%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923717%20GUCCI%20WA05LU_2.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923717%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923718 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923718%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923719 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 6 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_2.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923719%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923720 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 7 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_7.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_8.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_7.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_8.jpg
+  📷 附图5: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_2.jpg
+  📷 附图6: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923720%20GUCCI%20WA05LU_3.jpg
+
+
+📦 产品: 923721 GUCCI WA05LU
+------------------------------
+🏷️ 品牌标签: 有
+🎯 检测方法: pattern_and_analysis
+📈 置信度: 90.0%
+⭐ 主图优化: 已将最佳主图设为第一张
+📊 图片数量: 5 张
+
+🔗 字段映射说明:
+• 主图URL字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923721%20GUCCI%20WA05LU_4.jpg
+• 展示图片URLs字段: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923721%20GUCCI%20WA05LU_5.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923721%20GUCCI%20WA05LU_6.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923721%20GUCCI%20WA05LU_2.jpg
+https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923721%20GUCCI%20WA05LU_3.jpg
+
+🔗 CDN URLs (按电商优化顺序):
+  ⭐ 主图: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923721%20GUCCI%20WA05LU_4.jpg
+  📷 附图1: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923721%20GUCCI%20WA05LU_5.jpg
+  📷 附图2: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923721%20GUCCI%20WA05LU_6.jpg
+  📷 附图3: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923721%20GUCCI%20WA05LU_2.jpg
+  📷 附图4: https://trivesa.ams3.cdn.digitaloceanspaces.com/products/products/923721%20GUCCI%20WA05LU_3.jpg
+

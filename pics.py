@@ -1,6 +1,7 @@
 import requests
 import os
 import time
+import shutil
 
 from io import BytesIO
 from loguru import logger
@@ -15,7 +16,7 @@ def convert_gdrive_link(url):
 
 def save_all_pics(product_data):
     """
-    下载所有的图片存入本地
+    从本地products文件夹获取图片并复制到download文件夹
     :param product_data: 产品字典
     :return: 本地图片保存的绝对地址
     """
@@ -24,20 +25,60 @@ def save_all_pics(product_data):
     clear_jpg_files('download')
 
     abs_path = os.path.abspath('download')
+    products_path = os.path.abspath('products')
 
     saved_pic_paths = []
-    i = 1
-    for key, value in product_data.items():
-        if key.startswith('Image ') and value.startswith('http'):
-            # 转换 Google Drive 链接
-            download_url = convert_gdrive_link(value)
-            path = save_pic(download_url, i)
-            pic_abs_path = os.path.join(abs_path, path)
-            saved_pic_paths.append(pic_abs_path)
-            i += 1
-            if i > 15:
-                break
+    
+    # 获取产品的External reference作为图片文件名前缀
+    external_ref = product_data.get('External reference', '')
+    if not external_ref:
+        logger.error("No External reference found in product data")
+        return saved_pic_paths
 
+    # 查找匹配的图片文件
+    if os.path.exists(products_path):
+        # 获取所有匹配的图片文件
+        matching_files = []
+        for filename in os.listdir(products_path):
+            if filename.startswith(external_ref) and filename.lower().endswith('.jpg'):
+                matching_files.append(filename)
+        
+        # 按文件名排序，确保顺序一致
+        matching_files.sort()
+        
+        # 复制图片到download文件夹
+        for i, filename in enumerate(matching_files, 1):
+            if i > 15:  # 最多15张图片
+                break
+                
+            src_path = os.path.join(products_path, filename)
+            dst_filename = f'{i}.jpg'
+            dst_path = os.path.join('download', dst_filename)
+            
+            try:
+                # 确保输出目录存在
+                os.makedirs('download', exist_ok=True)
+                
+                # 复制文件
+                shutil.copy2(src_path, dst_path)
+                
+                pic_abs_path = os.path.join(abs_path, dst_filename)
+                saved_pic_paths.append(pic_abs_path)
+                
+                logger.debug(f'Copied image from {src_path} to {dst_path}')
+                
+            except Exception as e:
+                logger.error(f'Failed to copy image {filename}: {str(e)}')
+                continue
+    
+    else:
+        logger.error(f"Products folder not found: {products_path}")
+    
+    if not saved_pic_paths:
+        logger.error(f"No images found for product: {external_ref}")
+    else:
+        logger.info(f"Found {len(saved_pic_paths)} images for product: {external_ref}")
+    
     return saved_pic_paths
 
 
