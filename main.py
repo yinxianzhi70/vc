@@ -170,14 +170,8 @@ if __name__ == '__main__':
         user_data_path = os.path.expanduser('~/.config/google-chrome')
         cache_path = os.path.expanduser('~/.cache/google-chrome')
 
-    co.set_paths(
-        user_data_path=user_data_path,
-        cache_path=cache_path
-    )
-
-    # 基本设置
-    co.set_argument(f'--profile-directory={selected_profile}')  # 使用选择的配置文件
-    co.set_argument('--remote-debugging-port=9222')  # 设置调试端口
+    # 连接到已存在的Chrome实例，而不是启动新的
+    co.set_address('127.0.0.1:9222')  # 连接到现有的Chrome调试端口
     co.set_argument('--no-first-run')  # 跳过首次运行设置
     co.set_argument('--no-default-browser-check')  # 跳过默认浏览器检查
     co.set_argument('--disable-web-security')  # 禁用网页安全限制
@@ -193,10 +187,10 @@ if __name__ == '__main__':
     co.set_argument('--disable-features=VizDisplayCompositor')  # 禁用某些功能
     co.set_argument('--window-size=1920,1080')  # 设置窗口大小
 
-    logger.info(f"使用Chrome配置文件: {selected_profile}")
+    logger.info("连接到已运行的Chrome实例")
 
     try:
-        # 创建浏览器页面
+        # 连接到已运行的浏览器
         page = ChromiumPage(co)
         tab = page.get_tab()
         logger.info("Chrome浏览器启动成功")
@@ -207,9 +201,15 @@ if __name__ == '__main__':
         # 使用更简单的配置重试
         co_simple = ChromiumOptions()
         co_simple.set_browser_path(chrome_path)
+        # 重要：必须设置user_data_path，否则会创建临时目录，丢失登录信息
+        co_simple.set_paths(
+            user_data_path=user_data_path,
+            cache_path=cache_path
+        )
         co_simple.set_argument(f'--profile-directory={selected_profile}')
         co_simple.set_argument('--no-sandbox')
         co_simple.set_argument('--disable-dev-shm-usage')
+        co_simple.set_argument('--remote-debugging-port=9222')
         
         page = ChromiumPage(co_simple)
         tab = page.get_tab()

@@ -1,6 +1,6 @@
 import time
 import smart
-import pics_odoo as pics  # 使用新的 Odoo 图片处理模块
+import pics
 import platform
 import os
 import sys
@@ -579,18 +579,13 @@ def goto_the_position(tab, type, cat, brand):
     logger.debug(f'Go to the Sell an Item page, and choose the category')
 
     try:
-        # 截屏：开始
-        screenshot_path = f'logs/screenshot_start_{int(time.time())}.png'
-        os.makedirs('logs', exist_ok=True)
-        
+
         tab.listen.start('https://collector.vestiairecollective.com/com.snowplowanalytics.snowplow/tp2')
         tab.get('https://www.vestiairecollective.com/sell-clothes-online/')
 
         tab.listen.wait()
-        
-        # 截屏：页面加载后
-        tab.get_screenshot(screenshot_path)
-        logger.debug(f'Category page is loaded, screenshot: {screenshot_path}')
+
+        logger.debug(f'Category page is loaded')
 
         try:
             tab.ele('button#popin_tc_privacy_button_2', timeout=10).click()
@@ -603,174 +598,35 @@ def goto_the_position(tab, type, cat, brand):
         tab.wait(1)
 
         logger.debug(f'Click the Type: {type}')
-        
-        # 尝试多个选择器
-        selectors = [
-            f"xpath://span[contains(@class, 'universe-selector_depositForm__form__universeLabel') and text()='{type}']",
-            f"xpath://span[contains(@class, 'universeLabel') and text()='{type}']",
-            f"xpath://span[text()='{type}']",
-        ]
-        
-        gender_clicked = False
-        for selector in selectors:
-            try:
-                element = tab.ele(selector, timeout=5)
-                if element:
-                    element.click()
-                    gender_clicked = True
-                    logger.debug(f'✅ 成功点击 Gender: {type}')
-                    break
-            except:
-                continue
-        
-        if not gender_clicked:
-            # 截屏：找不到元素
-            error_screenshot = f'logs/error_gender_{int(time.time())}.png'
-            tab.get_screenshot(error_screenshot)
-            logger.error(f'❌ 找不到 Gender 按钮，截屏: {error_screenshot}')
-            raise Exception(f'Cannot find Gender button: {type}')
+        tab.ele(f"xpath://span[contains(@class, 'universe-selector_depositForm__form__universeLabel') and text()='{type}']", timeout=30).click()
 
         tab.wait(1)
 
         logger.debug(f'Choose the Category: {cat}')
-        
-        # Category 映射（VC 网站上的实际类别名称）
-        category_mapping = {
-            'Slippers': 'Mules & Clogs',
-            'Sneakers': 'Trainers',
-            'Boots': 'Boots',
-            'Sandals': 'Sandals',
-            'Flats': 'Flats',
-            'Heels': 'Heels',
-            'Handbags': 'Handbags',
-            'Bags': 'Handbags',
-        }
-        
-        vc_category = category_mapping.get(cat, cat)
-        
-        # 先用 JavaScript 设置值（更可靠）
-        category_select = tab.ele('css:select#preductAddCategory', timeout=10)
-        if category_select:
-            # 先尝试用文本选择
-            try:
-                category_select.select.by_text(vc_category)
-                logger.debug(f'✅ 已选择 Category: {vc_category}')
-            except:
-                # 如果失败，用 JavaScript 强制设置
-                logger.debug(f'Select by text 失败，用 JavaScript 设置...')
-                # 查找 value
-                options = category_select.eles('tag:option')
-                target_value = None
-                for opt in options:
-                    if opt.text.strip() == vc_category:
-                        target_value = opt.attr('value')
-                        break
-                
-                if target_value:
-                    tab.run_js(f'''
-                        const select = document.querySelector('#preductAddCategory');
-                        select.value = '{target_value}';
-                        select.dispatchEvent(new Event('change', {{ bubbles: true }}));
-                        select.dispatchEvent(new Event('input', {{ bubbles: true }}));
-                    ''')
-                    logger.debug(f'✅ 用 JavaScript 设置 Category: {vc_category} (value={target_value})')
-                else:
-                    logger.warning(f'⚠️  未找到 Category: {vc_category}')
-        else:
-            logger.error('未找到 Category 下拉框')
-            raise Exception('Cannot find category select')
+        smart.smart_click(tab, mode='select', options_css_xpath='css:#preductAddCategory', click_rule='', org_name=cat)
+        # tab.ele('css:#preductAddCategory').select.by_text(cat)
 
-        tab.wait(2)
+        tab.wait(1)
 
         logger.debug(f'Input the brand: {brand}')
-        brand_input = tab.ele(f'xpath://input[@id="depositForm__form__brands-input"]', timeout=10)
-        
-        # 清空并输入品牌
-        brand_input.clear()
-        tab.wait(0.5)
-        
-        # 逐字输入（模拟真实输入）
-        for char in brand:
-            brand_input.input(char)
-            tab.wait(0.15)
-        
-        # 等待品牌下拉选项出现
-        logger.debug('等待品牌下拉选项出现...')
-        brand_selected = False
-        for i in range(10):
-            tab.wait(0.5)
-            # 尝试多个选择器
-            brand_selectors = [
-                f'xpath://button[text()="{brand.title()}"]',  # Prada
-                f'xpath://*[text()="{brand.title()}"]',
-                f'xpath://*[contains(text(), "{brand.upper()}")]',
-                f'xpath://*[contains(@class, "brand-search") and contains(., "{brand.title()}")]',
-            ]
-            
-            for selector in brand_selectors:
-                try:
-                    brand_option = tab.ele(selector, timeout=1)
-                    if brand_option:
-                        brand_option.click()
-                        logger.debug(f'✅ 已选择品牌: {brand_option.text}')
-                        brand_selected = True
-                        break
-                except:
-                    continue
-            
-            if brand_selected:
-                break
-        
-        if not brand_selected:
-            logger.warning(f'⚠️  未找到品牌选项，继续尝试...')
-            # 使用 smart_click 作为后备
-            options_css_xpath = "xpath://*[contains(@class, 'brand-search_depositForm__form__optionsList__item__value')]/../../.."
-            click_rule = "xpath://*[contains(@class, 'brand-search_depositForm__form__optionsList__item__value__') and normalize-space() = '{replace_name}']/.."
-            smart.smart_click(tab, mode='click', options_css_xpath=options_css_xpath, click_rule=click_rule, org_name=brand)
-        
-        tab.wait(2)
+        # tab.ele(f"xpath://div[contains(@class, 'brand-search_depositForm_') and text()='{brand}']/..").click(by_js=True)
+        # tab.ele(f"xpath://div[contains(@class, 'brand-search_depositForm_') and text()='{brand}']/..").click(by_js=True)
+        tab.ele(f'xpath://input[@id="depositForm__form__brands-input"]').input(brand)
 
-        # 等待 Continue 按钮可点击（尝试多种选择器）
-        continue_selectors = [
-            'css:button#vc-preduct-add-submit',  # 直接用 ID
-            'xpath://button[@id="vc-preduct-add-submit"]',
-            'xpath://button[@id="vc-preduct-add-submit" and not(@disabled)]',
-        ]
-        
-        continue_btn = None
-        for selector in continue_selectors:
-            try:
-                continue_btn = tab.wait.ele_displayed(selector, timeout=5)
-                if continue_btn:
-                    logger.debug(f'找到 Continue 按钮: {selector}')
-                    break
-            except:
-                continue
-        
-        if not continue_btn:
-            screenshot = f'logs/error_no_continue_{int(time.time())}.png'
-            tab.get_screenshot(screenshot)
-            logger.error(f'未找到 Continue 按钮，截屏: {screenshot}')
-            raise Exception('Cannot find Continue button')
-        
-        tab.wait(2)
+        tab.wait(1)
+        # options_css_xpath = "xpath://span[contains(@class, 'brand-search_depositForm_')]/../../../.."  # 定位到选项列表
+        options_css_xpath = "xpath://*[contains(@class, 'brand-search_depositForm__form__optionsList__item__value')]/../../.."  # 定位到选项列表
+        click_rule = "xpath://*[contains(@class, 'brand-search_depositForm__form__optionsList__item__value__') and normalize-space() = '{replace_name}']/.."  # 选项点击规则，{replace_name} 会被替换成最匹配名称
+        smart.smart_click(tab, mode='click', options_css_xpath=options_css_xpath, click_rule=click_rule, org_name=brand)
+
+        tab.wait.ele_displayed('xpath://button[@id="vc-preduct-add-submit" and not(@disabled)]', timeout=15)
+        tab.wait(1)
+
         logger.debug('Click continue button')
-        continue_btn.click()
-        
-        logger.debug('等待页面跳转...')
-        tab.wait(3)
+        tab.ele('xpath://button[@id="vc-preduct-add-submit" and not(@disabled)]').click()
 
         # Check whether on the product adding page
-        screenshot_before = f'logs/before_wait_{int(time.time())}.png'
-        tab.get_screenshot(screenshot_before)
-        logger.debug(f'等待文件上传按钮出现，当前截屏: {screenshot_before}')
-        
-        upload_btn = tab.wait.ele_displayed("xpath://button[contains(@class, 'FileUploader_field-file-fake__')]", timeout=20)
-        if not upload_btn:
-            screenshot_timeout = f'logs/timeout_upload_btn_{int(time.time())}.png'
-            tab.get_screenshot(screenshot_timeout)
-            logger.error(f'未找到文件上传按钮，截屏: {screenshot_timeout}')
-            raise Exception('Cannot find upload button, page may not have transitioned')
+        tab.wait.ele_displayed("xpath://button[contains(@class, 'FileUploader_field-file-fake__')]", timeout=15)
 
         logger.success('The page is in the right from')
 
@@ -984,101 +840,15 @@ def submit_step2_photos(tab, product_data):
                     
             logger.success('照片上传成功')
             
-            # 上传成功后截屏
-            screenshot_after_upload = f'logs/after_photos_upload_{int(time.time())}.png'
-            tab.get_screenshot(screenshot_after_upload)
-            logger.debug(f'照片上传完成，截屏: {screenshot_after_upload}')
-            
-            # 等待一下让页面状态更新
-            tab.wait(3)
-            
-            # 查找并点击继续按钮（多个可能的定位方式）
-            continue_button = None
-            continue_selectors = [
-                'xpath://button[text()="Continue" and not(@disabled)]',
-                'xpath://button[contains(text(), "Continue")]',
-                'css:button[type="submit"]',
-                'xpath://button[@id="vc-preduct-add-submit" and not(@disabled)]',
-                'css:button#vc-preduct-add-submit:not([disabled])'
-            ]
-            
-            for selector in continue_selectors:
-                try:
-                    if btn := tab.ele(selector, timeout=5):
-                        # 检查按钮是否可用
-                        disabled = btn.attr('disabled')
-                        if not disabled:
-                            continue_button = btn
-                            logger.debug(f'找到继续按钮：{selector}')
-                            break
-                        else:
-                            logger.debug(f'找到继续按钮但已禁用：{selector}')
-                except Exception as e:
-                    logger.debug(f'尝试选择器 {selector} 失败: {e}')
-                    continue
-            
-            if not continue_button:
-                # 截屏并记录当前页面状态
-                screenshot_no_continue = f'logs/no_continue_button_{int(time.time())}.png'
-                tab.get_screenshot(screenshot_no_continue)
-                logger.error(f'未找到可点击的继续按钮，截屏: {screenshot_no_continue}')
-                
-                # 尝试查找所有按钮元素用于调试
-                all_buttons = tab.eles('css:button')
-                logger.debug(f'页面上找到 {len(all_buttons)} 个按钮元素')
-                for i, btn in enumerate(all_buttons[:10]):  # 只显示前10个
-                    try:
-                        btn_text = btn.text[:50] if btn.text else '无文本'
-                        btn_id = btn.attr('id') or '无ID'
-                        btn_disabled = btn.attr('disabled')
-                        logger.debug(f'按钮 {i+1}: 文本="{btn_text}", ID="{btn_id}", 禁用={btn_disabled}')
-                    except:
-                        pass
-                
-                raise Exception("未找到可点击的继续按钮")
-            
             # 点击继续按钮
-            logger.info('点击继续按钮进入下一步')
-            screenshot_before_click = f'logs/before_click_continue_{int(time.time())}.png'
-            tab.get_screenshot(screenshot_before_click)
+            continue_button = tab.ele('xpath://button[text()="Continue" and not(@disabled)]')
+            if not continue_button:
+                raise Exception("未找到可点击的继续按钮")
+                
+            continue_button.click()
             
-            try:
-                continue_button.click()
-            except Exception as e:
-                logger.warning(f'直接点击失败，尝试JavaScript点击: {e}')
-                tab.run_js('arguments[0].click()', continue_button)
-            
-            # 等待下一步页面加载 - 使用多个可能的标识符
-            logger.info('等待下一步页面加载...')
-            tab.wait(2)
-            
-            next_page_indicators = [
-                'css:textarea.TextArea_textarea__WRrcw',  # 描述文本框（第3步）
-                'css:input[name="serial_number"]',  # 序列号输入框
-                'css:label[text()="Description"]',  # 描述标签
-                'xpath://label[contains(text(), "Description")]',
-                'css:textarea[placeholder*="Add item details"]',
-                'css:textarea[placeholder*="details"]'
-            ]
-            
-            page_loaded = False
-            for indicator in next_page_indicators:
-                try:
-                    if tab.wait.ele_displayed(indicator, timeout=15):
-                        logger.success(f'下一步页面已加载，标识符: {indicator}')
-                        page_loaded = True
-                        break
-                except Exception as e:
-                    logger.debug(f'等待标识符 {indicator} 超时: {e}')
-                    continue
-            
-            # 截屏确认页面状态
-            screenshot_after_continue = f'logs/after_click_continue_{int(time.time())}.png'
-            tab.get_screenshot(screenshot_after_continue)
-            logger.debug(f'点击继续后截屏: {screenshot_after_continue}')
-            
-            if not page_loaded:
-                logger.warning('未检测到下一步页面加载，但继续执行')
+            # 等待下一步页面加载
+            tab.wait.ele_displayed('css:input[name="serial_number"]', timeout=10)
             
             return True
             
@@ -1199,119 +969,45 @@ def submit_step3_description(tab, product_data):
         return False
 
 
-def submit_step4_address(tab, product_data):
-    """选择地址信息"""
-    logger.info('进入第4步：选择地址')
+async def submit_step4_address(self):
+    """提交地址信息"""
+    self.logger.info("开始提交地址信息...")
     
     try:
-        # 等待地址选择页面加载
-        tab.wait(2)
-        
-        # 截屏记录当前状态
-        screenshot_before_address = f'logs/before_address_{int(time.time())}.png'
-        tab.get_screenshot(screenshot_before_address)
-        logger.debug(f'地址选择前截屏: {screenshot_before_address}')
-        
-        # 尝试多种选择器定位地址选择框
-        address_selectors = [
-            'css:input[name="selectedAddress"]',
-            'css:input[placeholder*="address"]',
+        # 尝试多种选择器定位地址输入框
+        selectors = [
+            'css:input[id="6868921"]',
+            'css:input[placeholder*="地址"]',
             'css:input[aria-label*="address"]',
-            'xpath://input[contains(@placeholder, "address") or contains(@aria-label, "address")]',
-            'css:select[name="selectedAddress"]',
-            'xpath://select[@name="selectedAddress"]'
+            'xpath://input[contains(@placeholder, "地址") or contains(@aria-label, "address")]'
         ]
         
-        address_field = None
-        for selector in address_selectors:
+        input_element = None
+        for selector in selectors:
             try:
-                if field := tab.wait.ele_displayed(selector, timeout=5):
-                    address_field = field
-                    logger.debug(f'找到地址选择框：{selector}')
+                input_element = await self.page.wait_for_selector(selector, timeout=5000)
+                if input_element:
+                    self.logger.info(f"找到地址输入框，使用选择器: {selector}")
                     break
             except Exception as e:
-                logger.debug(f'尝试选择器 {selector} 失败: {e}')
+                self.logger.debug(f"使用选择器 {selector} 未找到元素: {str(e)}")
                 continue
-        
-        if not address_field:
-            # 如果找不到地址输入框，可能地址已经选择好了，直接继续
-            logger.warning('未找到地址选择框，可能地址已选择，尝试继续')
-            screenshot_no_address = f'logs/no_address_field_{int(time.time())}.png'
-            tab.get_screenshot(screenshot_no_address)
+                    
+        if not input_element:
+            raise Exception("无法找到地址输入框")
             
-            # 尝试直接查找继续按钮
-            continue_button = tab.ele('xpath://button[text()="Continue" and not(@disabled)]', timeout=5)
-            if continue_button:
-                logger.info('找到继续按钮，直接继续')
-                continue_button.click()
-                tab.wait(2)
-                return True
-        else:
-            # 如果有地址选择框，尝试选择第一个地址或使用默认地址
-            logger.info('找到地址选择框，尝试选择默认地址')
-            
-            # 如果是下拉框，选择第一个选项
-            if address_field.tag == 'select':
-                options = address_field.eles('css:option')
-                if options and len(options) > 1:  # 第一个通常是默认的
-                    address_field.select.by_index(1)
-                    logger.success('已选择地址')
-            else:
-                # 如果是输入框，可能需要点击选择
-                address_field.click()
-                tab.wait(1)
-                
-                # 尝试选择第一个选项
-                first_option = tab.ele('css:[role="option"]', timeout=3)
-                if first_option:
-                    first_option.click()
-                    logger.success('已选择地址')
+        # 输入地址信息
+        await input_element.fill("123 Test Street")
+        await self.page.keyboard.press("Enter")
         
-        # 查找并点击继续按钮
-        continue_button = None
-        continue_selectors = [
-            'xpath://button[text()="Continue" and not(@disabled)]',
-            'xpath://button[contains(text(), "Continue")]',
-            'css:button[type="submit"]',
-            'xpath://button[@id="vc-preduct-add-submit" and not(@disabled)]'
-        ]
-        
-        for selector in continue_selectors:
-            try:
-                if btn := tab.ele(selector, timeout=5):
-                    disabled = btn.attr('disabled')
-                    if not disabled:
-                        continue_button = btn
-                        logger.debug(f'找到继续按钮：{selector}')
-                        break
-            except:
-                continue
-        
-        if not continue_button:
-            screenshot_no_continue = f'logs/no_continue_address_{int(time.time())}.png'
-            tab.get_screenshot(screenshot_no_continue)
-            logger.warning(f'未找到继续按钮，截屏: {screenshot_no_continue}')
-            # 不抛出异常，可能地址步骤可以跳过
-            return True
-        
-        logger.info('点击继续按钮')
-        continue_button.click()
-        
-        # 等待下一步页面加载
-        tab.wait(2)
-        
-        screenshot_after_address = f'logs/after_address_{int(time.time())}.png'
-        tab.get_screenshot(screenshot_after_address)
-        logger.debug(f'地址选择后截屏: {screenshot_after_address}')
-        
-        return True
+        # 等待地址确认
+        await self.page.wait_for_selector('css:button[type="submit"]', timeout=10000)
+        self.logger.info("地址信息提交成功")
         
     except Exception as e:
-        logger.error(f'地址选择步骤失败: {e}')
-        screenshot_error = f'logs/address_error_{int(time.time())}.png'
-        tab.get_screenshot(screenshot_error)
-        logger.debug(f'错误截屏: {screenshot_error}')
-        return False
+        self.logger.error(f"提交地址时出错: {str(e)}")
+        await self.save_screenshot("address_error")
+        raise
 
 
 def submit_step5_price(tab, product_data):
@@ -1425,136 +1121,6 @@ def submit_step5_price(tab, product_data):
     except Exception as e:
         logger.error(f'价格输入步骤发生错误：{e}')
         return False
-
-
-def submit_step6_final_submit(tab, product_data):
-    """
-    最终提交步骤 - 确认并发布产品
-    """
-    try:
-        logger.info('进入第7步：最终提交')
-        
-        # 等待页面加载
-        tab.wait(3)
-        
-        # 截屏记录当前状态
-        screenshot_before_submit = f'logs/before_final_submit_{int(time.time())}.png'
-        tab.get_screenshot(screenshot_before_submit)
-        logger.debug(f'最终提交前截屏: {screenshot_before_submit}')
-        
-        # 查找最终提交按钮 - 多种可能的定位方式
-        submit_selectors = [
-            'xpath://button[contains(text(), "Publish")]',
-            'xpath://button[contains(text(), "List item")]',
-            'xpath://button[contains(text(), "Submit")]',
-            'xpath://button[contains(text(), "Confirm")]',
-            'xpath://button[contains(text(), "Complete")]',
-            'css:button[type="submit"]',
-            'css:button[class*="publish"]',
-            'css:button[class*="submit"]',
-            'css:button[id*="publish"]',
-            'css:button[id*="submit"]',
-            'css:button[data-testid*="publish"]',
-            'css:button[data-testid*="submit"]',
-            'xpath://button[@id="vc-preduct-add-submit" and not(@disabled)]',
-            'css:button#vc-preduct-add-submit:not([disabled])'
-        ]
-        
-        submit_button = None
-        for selector in submit_selectors:
-            try:
-                if btn := tab.wait.ele_displayed(selector, timeout=5):
-                    # 检查按钮是否可用
-                    disabled = btn.attr('disabled')
-                    if not disabled:
-                        submit_button = btn
-                        logger.debug(f'找到最终提交按钮：{selector}')
-                        break
-                    else:
-                        logger.debug(f'找到按钮但已禁用：{selector}')
-            except Exception as e:
-                logger.debug(f'尝试选择器 {selector} 失败: {e}')
-                continue
-        
-        if not submit_button:
-            # 截屏并尝试查找所有可能的按钮
-            screenshot_no_button = f'logs/no_final_submit_button_{int(time.time())}.png'
-            tab.get_screenshot(screenshot_no_button)
-            logger.warning(f'未找到最终提交按钮，截屏: {screenshot_no_button}')
-            
-            # 尝试查找所有按钮用于调试
-            all_buttons = tab.eles('css:button')
-            logger.debug(f'页面上找到 {len(all_buttons)} 个按钮元素')
-            for i, btn in enumerate(all_buttons[:15]):  # 显示前15个
-                try:
-                    btn_text = btn.text[:50] if btn.text else '无文本'
-                    btn_id = btn.attr('id') or '无ID'
-                    btn_class = btn.attr('class') or '无class'
-                    btn_disabled = btn.attr('disabled')
-                    logger.debug(f'按钮 {i+1}: 文本="{btn_text}", ID="{btn_id}", Class="{btn_class}", 禁用={btn_disabled}')
-                except:
-                    pass
-            
-            # 检查是否已经在产品页面（可能已经自动提交）
-            if '/items/' in tab.url or '/sell/' not in tab.url:
-                logger.success('可能已自动跳转到产品页面，发布可能已成功')
-                return True
-            
-            raise Exception("未找到最终提交按钮")
-        
-        # 点击最终提交按钮
-        logger.info('点击最终提交按钮')
-        screenshot_before_click = f'logs/before_click_final_submit_{int(time.time())}.png'
-        tab.get_screenshot(screenshot_before_click)
-        
-        try:
-            submit_button.click()
-        except Exception as e:
-            logger.warning(f'直接点击失败，尝试JavaScript点击: {e}')
-            tab.run_js('arguments[0].click()', submit_button)
-        
-        # 等待提交完成
-        logger.info('等待提交完成...')
-        tab.wait(5)
-        
-        # 检查是否成功跳转到产品页面
-        final_url = tab.url
-        if '/items/' in final_url:
-            logger.success('已跳转到产品页面，发布成功！')
-            screenshot_success = f'logs/final_submit_success_{int(time.time())}.png'
-            tab.get_screenshot(screenshot_success)
-            return True
-        
-        # 检查是否有错误提示
-        error_selectors = [
-            'css:[class*="error"]',
-            'css:[class*="alert"]',
-            'xpath://div[contains(@class, "error")]',
-            'xpath://div[contains(text(), "error")]'
-        ]
-        
-        for selector in error_selectors:
-            if error_ele := tab.ele(selector, timeout=2):
-                error_text = error_ele.text[:200] if error_ele.text else '未知错误'
-                logger.error(f'检测到错误提示：{error_text}')
-                screenshot_error = f'logs/final_submit_error_{int(time.time())}.png'
-                tab.get_screenshot(screenshot_error)
-                raise Exception(f"提交时出现错误：{error_text}")
-        
-        # 截屏确认当前状态
-        screenshot_after_submit = f'logs/after_final_submit_{int(time.time())}.png'
-        tab.get_screenshot(screenshot_after_submit)
-        logger.debug(f'最终提交后截屏: {screenshot_after_submit}')
-        
-        logger.success('最终提交步骤完成')
-        return True
-        
-    except Exception as e:
-        logger.error(f'最终提交步骤失败: {e}')
-        screenshot_error = f'logs/final_submit_step_error_{int(time.time())}.png'
-        tab.get_screenshot(screenshot_error)
-        logger.debug(f'错误截屏: {screenshot_error}')
-        return False
             
 
 def input_search_click(tab, input_xpath_css, option_css_xpath, click_xpath_css, the_name):
@@ -1610,8 +1176,8 @@ def main():
     for i, (profile_dir, profile_name) in enumerate(profiles, 1):
         print(f"{i}. {profile_name} ({profile_dir})")
         
-    # 默认选择第5个配置文件（Profile 7 - trivesa.it）
-    default_profile_index = 4  # 索引从0开始，所以4代表第5个配置文件
+    # 默认选择第3个配置文件（Profile 2）
+    default_profile_index = 2  # 索引从0开始，所以2代表第3个配置文件
     
     try:
         # 如果存在第3个配置文件，直接使用它
@@ -1828,83 +1394,98 @@ def publish_from_data(data):
         dict: {'success': bool, 'vc_item_id': str, 'vc_listing_url': str, 'error': str}
     """
     import sys
-    from DrissionPage import ChromiumPage
-    
-    # 导入监控控制模块
-    try:
-        import monitor_control
-    except ImportError:
-        # 如果导入失败，创建一个空的监控控制类
-        class MonitorControl:
-            @staticmethod
-            def clear_stuck(): pass
-            @staticmethod
-            def update_publisher_status(*args, **kwargs): pass
-            @staticmethod
-            def mark_stuck(*args, **kwargs): pass
-            @staticmethod
-            def get_retry_request(): return None
-            @staticmethod
-            def clear_retry_request(): pass
-        monitor_control = MonitorControl()
     
     try:
         logger.info("=" * 60)
         logger.info(f"🚀 开始发布产品: {data.get('product_name', 'Unknown')}")
         logger.info("=" * 60)
         
-        # 连接到已运行的 Chrome 实例（端口 9222）
-        logger.info("连接到已运行的 Chrome (端口 9222)...")
-        logger.info("💡 请确保已运行 start_chrome.command 启动脚本")
+        # 获取 Chrome profiles
+        profiles = get_chrome_profiles()
         
+        # 默认使用第3个配置文件（Profile 2，已登录 VC）
+        default_profile_index = 2
+        if default_profile_index < len(profiles):
+            selected_profile = profiles[default_profile_index][0]
+            logger.info(f"使用 Chrome 配置文件: {profiles[default_profile_index][1]} ({selected_profile})")
+        else:
+            # 如果第3个不存在，使用第一个
+            selected_profile = profiles[0][0]
+            logger.warning(f"默认配置文件不存在，使用: {profiles[0][1]} ({selected_profile})")
+        
+        # 关闭现有 Chrome 实例
         try:
-            # 使用 ChromiumPage 类连接到已运行的 Chrome
-            page = ChromiumPage(addr_or_opts='127.0.0.1:9222')
-            tab = page.get_tab()
-            logger.success("✅ 成功连接到 Chrome")
+            if sys.platform == 'darwin':
+                subprocess.run(['pkill', '-f', 'Google Chrome'], capture_output=True)
+            elif sys.platform == 'win32':
+                subprocess.run(['taskkill', '/F', '/IM', 'chrome.exe'], capture_output=True)
+            elif sys.platform == 'linux':
+                subprocess.run(['pkill', '-f', 'chrome'], capture_output=True)
+            logger.debug("已关闭现有的Chrome实例")
         except Exception as e:
-            logger.error(f"❌ 无法连接到 Chrome: {e}")
-            logger.error("请先运行 start_chrome.command 启动 Chrome")
-            raise Exception(f"无法连接到 Chrome (端口 9222): {e}")
+            logger.warning(f"关闭Chrome实例时出错: {e}")
         
-        # 执行发布流程（带卡住检测）
-        steps = [
-            ("步骤 1: 前往商品发布页面", lambda: goto_the_position(tab, data['Gender'], data['Category'], data['Brand']), "无法完成类别选择"),
-            ("步骤 2: 填写商品详细信息", lambda: submit_step1_details(tab, data), None),
-            ("步骤 3: 上传商品图片", lambda: submit_step2_photos(tab, data), None),
-            ("步骤 4: 填写商品描述", lambda: submit_step3_description(tab, data), "填写商品描述失败"),
-            ("步骤 5: 选择地址", lambda: submit_step4_address(tab, data), "地址选择失败"),
-            ("步骤 6: 设置价格", lambda: submit_step5_price(tab, data), "价格设置失败"),
-            ("步骤 7: 最终提交", lambda: submit_step6_final_submit(tab, data), "最终提交失败"),
-        ]
+        # 创建 Chrome 配置
+        co = ChromiumOptions()
         
-        for step_name, step_func, error_msg in steps:
-            logger.info(step_name)
-            monitor_control.update_publisher_status(step_name, 'running')
-            
-            # 检查是否有重试请求
-            retry_request = monitor_control.get_retry_request()
-            if retry_request and retry_request.get('action') == 'retry':
-                logger.info(f"收到重试请求，重新执行 {step_name}")
-                monitor_control.clear_retry_request()
-            
-            try:
-                result = step_func()
-                if result is False or (result is None and error_msg):
-                    raise Exception(error_msg or f"{step_name}失败")
-                monitor_control.update_publisher_status(step_name, 'completed')
-            except Exception as e:
-                # 截屏记录错误
-                error_screenshot = f'logs/error_{step_name.replace(" ", "_")}_{int(time.time())}.png'
-                tab.get_screenshot(error_screenshot)
-                monitor_control.mark_stuck(step_name, str(e), error_screenshot)
-                monitor_control.update_publisher_status(step_name, 'error', {'error': str(e)})
-                raise
+        # 设置 Chrome 路径
+        if sys.platform == 'darwin':
+            chrome_path = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+            user_data_path = '/Users/yinxianzhi/Library/Application Support/Google/Chrome'
+            cache_path = '/Users/yinxianzhi/Library/Caches/Google/Chrome'
+        elif sys.platform == 'win32':
+            chrome_path = r'C:\Program Files\Google\Chrome\Application\chrome.exe'
+            user_data_path = os.path.expandvars(r'%LOCALAPPDATA%\Google\Chrome\User Data')
+            cache_path = os.path.expandvars(r'%LOCALAPPDATA%\Google\Chrome\User Data\Default\Cache')
+        else:
+            chrome_path = '/usr/bin/google-chrome'
+            user_data_path = os.path.expanduser('~/.config/google-chrome')
+            cache_path = os.path.expanduser('~/.cache/google-chrome')
         
-        # 等待页面跳转或加载完成
-        tab.wait(5)
+        co.set_browser_path(chrome_path)
+        co.set_paths(user_data_path=user_data_path, cache_path=cache_path)
+        co.set_argument(f'--profile-directory={selected_profile}')
+        co.set_argument('--remote-debugging-port=9222')
+        co.set_argument('--no-first-run')
+        co.set_argument('--no-default-browser-check')
+        co.set_argument('--disable-gpu')
+        co.set_argument('--disable-dev-shm-usage')
+        co.set_argument('--no-sandbox')
+        co.set_argument('--disable-setuid-sandbox')
+        co.set_argument('--disable-extensions')
+        co.set_argument('--disable-popup-blocking')
+        co.set_argument('--disable-notifications')
+        co.set_argument('--disable-infobars')
         
-        # 获取发布后的 URL（应该跳转到产品页面）
+        # 启动浏览器
+        logger.info("正在启动 Chrome...")
+        page = ChromiumPage(co)
+        tab = page.get_tab()
+        
+        # 执行发布流程
+        logger.info("步骤 1: 前往商品发布页面")
+        if not goto_the_position(tab, data['Gender'], data['Category'], data['Brand']):
+            raise Exception("无法完成类别选择")
+        
+        logger.info("步骤 2: 填写商品详细信息")
+        submit_step1_details(tab, data)
+        
+        logger.info("步骤 3: 上传商品图片")
+        submit_step2_photos(tab, data)
+        
+        logger.info("步骤 4: 填写商品描述")
+        if not submit_step3_description(tab, data):
+            raise Exception("填写商品描述失败")
+        
+        logger.info("步骤 5: 选择地址")
+        if not submit_step4_address(tab, data):
+            raise Exception("地址选择失败")
+        
+        logger.info("步骤 6: 设置价格")
+        if not submit_step5_price(tab, data):
+            raise Exception("价格设置失败")
+        
+        # 获取发布后的 URL（假设最后一步会跳转到产品页面）
         final_url = tab.url
         
         # 尝试从 URL 中提取 VC item ID
@@ -1916,16 +1497,8 @@ def publish_from_data(data):
         logger.info(f"   VC Item ID: {vc_item_id}")
         logger.info(f"   VC URL: {final_url}")
         
-        # 更新状态为完成
-        monitor_control.update_publisher_status('completed', 'completed', {
-            'vc_item_id': vc_item_id,
-            'vc_listing_url': final_url
-        })
-        monitor_control.clear_stuck()
-        
-        # 注意：不关闭浏览器，因为是连接到已运行的 Chrome
-        # 可以继续处理下一个产品
-        logger.debug("保持 Chrome 连接，准备处理下一个产品")
+        # 关闭浏览器
+        tab.quit()
         
         return {
             'success': True,
@@ -1938,11 +1511,12 @@ def publish_from_data(data):
         logger.error(f"❌ 发布失败: {str(e)}")
         logger.exception("详细错误信息:")
         
-        # 更新状态为错误
-        monitor_control.update_publisher_status('error', 'error', {'error': str(e)})
-        
-        # 不关闭浏览器，仅记录错误
-        # Chrome 保持运行，可以继续处理下一个产品
+        # 尝试关闭浏览器
+        try:
+            if 'tab' in locals():
+                tab.quit()
+        except:
+            pass
         
         return {
             'success': False,
