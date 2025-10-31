@@ -1,5 +1,5 @@
 """
-Odoo 图片处理模块 - 从 listing/data/products 文件夹获取图片
+Odoo 图片处理模块 - 从 Google Drive 同步的 photo_processing 文件夹获取图片
 适配新的 Odoo 数据流程
 """
 
@@ -10,23 +10,72 @@ from datetime import datetime, timedelta
 from loguru import logger
 
 
-def find_product_images_folder(default_code, base_path="/Users/yinxianzhi/workspace/listing/data/products", max_days=120):
+def find_photo_processing_folder():
+    """
+    查找 photo_processing 文件夹（Google Drive 同步）
+    在不同电脑上位置可能不同，尝试常见位置
+    
+    Returns:
+        photo_processing 文件夹路径，如果找不到返回 None
+    """
+    possible_paths = [
+        # Mac 常见的 Google Drive 同步位置（Shared drives）
+        Path.home() / "Library" / "CloudStorage" / "GoogleDrive-david@ecrindefleur.com" / "Shared drives" / "photo_processing",
+        Path.home() / "Library" / "CloudStorage" / "GoogleDrive-info@trivesa.it" / "Shared drives" / "photo_processing",
+        # 通配符匹配所有 Google Drive 账号
+        Path.home() / "Library" / "CloudStorage" / "GoogleDrive-*" / "Shared drives" / "photo_processing",
+        Path.home() / "Library" / "CloudStorage" / "GoogleDrive-*" / "My Drive" / "photo_processing",
+        # 传统 Google Drive 位置
+        Path.home() / "Google Drive" / "photo_processing",
+        Path.home() / "GoogleDrive" / "photo_processing", 
+        # 直接在用户目录下
+        Path.home() / "photo_processing",
+        # 在 workspace 下
+        Path("/Users/yinxianzhi/workspace/photo_processing"),
+        # 备用：listing 目录
+        Path("/Users/yinxianzhi/workspace/listing/data/products"),
+    ]
+    
+    for path in possible_paths:
+        # 处理通配符路径
+        if '*' in str(path):
+            parent = path.parent
+            pattern = path.name
+            if parent.exists():
+                matching = list(parent.glob(pattern))
+                if matching:
+                    logger.info(f"✅ 找到 photo_processing 文件夹: {matching[0]}")
+                    return matching[0]
+        elif path.exists():
+            logger.info(f"✅ 找到 photo_processing 文件夹: {path}")
+            return path
+    
+    logger.error("❌ 未找到 photo_processing 文件夹")
+    return None
+
+
+def find_product_images_folder(default_code, base_path=None, max_days=120):
     """
     查找产品图片所在的文件夹
     
     Args:
         default_code: Odoo 的 default_code (例如: "803099 PRADA WS04SE")
-        base_path: 图片根目录
+        base_path: 图片根目录（如果为None，自动查找 photo_processing 文件夹）
         max_days: 搜索最近多少天的文件夹（默认 120 天）
         
     Returns:
         图片文件夹路径，如果找不到返回 None
     """
-    base_path = Path(base_path)
-    
-    if not base_path.exists():
-        logger.error(f"❌ 图片根目录不存在: {base_path}")
-        return None
+    # 如果没有指定 base_path，自动查找 photo_processing 文件夹
+    if base_path is None:
+        base_path = find_photo_processing_folder()
+        if base_path is None:
+            return None
+    else:
+        base_path = Path(base_path)
+        if not base_path.exists():
+            logger.error(f"❌ 图片根目录不存在: {base_path}")
+            return None
     
     # 将 default_code 转换为文件名前缀 (空格保留)
     # "803099 PRADA WS04SE" → 查找 "803099 PRADA WS*_*.jpg"

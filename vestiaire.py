@@ -592,11 +592,73 @@ def goto_the_position(tab, type, cat, brand):
         tab.get_screenshot(screenshot_path)
         logger.debug(f'Category page is loaded, screenshot: {screenshot_path}')
 
+        # 处理Cookie同意弹窗（优先处理，可能阻塞其他操作）
         try:
-            tab.ele('button#popin_tc_privacy_button_2', timeout=10).click()
+            cookie_selectors = [
+                'css:button[class*="accept"]',
+                'css:button[id*="accept"]',
+                'xpath://button[contains(text(), "Accept")]',
+                'xpath://button[contains(text(), "接受")]',
+                'css:button[class*="cookie"]',
+                'xpath://button[contains(@class, "cookie") and contains(text(), "Accept")]',
+            ]
+            
+            cookie_clicked = False
+            for selector in cookie_selectors:
+                try:
+                    cookie_button = tab.ele(selector, timeout=3)
+                    if cookie_button:
+                        cookie_button.click()
+                        cookie_clicked = True
+                        logger.debug(f'✅ 已点击Cookie同意按钮')
+                        tab.wait(1)
+                        break
+                except:
+                    continue
+            
+            if not cookie_clicked:
+                # 尝试查找"Continue without accepting"链接
+                try:
+                    continue_link = tab.ele('xpath://a[contains(text(), "Continue without accepting")]', timeout=2)
+                    if continue_link:
+                        continue_link.click()
+                        logger.debug(f'✅ 已点击"Continue without accepting"')
+                        tab.wait(1)
+                except:
+                    pass
+        except Exception as e:
+            logger.debug(f'处理Cookie弹窗时出错（可能不存在）: {e}')
+
+        # 处理隐私政策弹窗
+        try:
+            tab.ele('button#popin_tc_privacy_button_2', timeout=5).click()
             logger.debug('Click privacy button')
+            tab.wait(1)
         except:
             pass
+
+        # 处理Welcome弹窗（登录提示）
+        try:
+            welcome_selectors = [
+                'css:button[class*="close"]',
+                'css:button[class*="dismiss"]',
+                'xpath://button[contains(text(), "Continue")]',
+                'xpath://button[contains(text(), "Close")]',
+                'css:button[aria-label*="close"]',
+            ]
+            
+            for selector in welcome_selectors:
+                try:
+                    welcome_button = tab.ele(selector, timeout=2)
+                    if welcome_button:
+                        welcome_button.click()
+                        logger.debug(f'✅ 已关闭Welcome弹窗')
+                        tab.wait(1)
+                        break
+                except:
+                    continue
+        except Exception as e:
+            logger.debug(f'处理Welcome弹窗时出错（可能不存在）: {e}')
 
         # Choose the category
         tab.wait.ele_displayed("css:input[data-role='search']", timeout=15)
@@ -604,29 +666,84 @@ def goto_the_position(tab, type, cat, brand):
 
         logger.debug(f'Click the Type: {type}')
         
-        # 尝试多个选择器
+        # 尝试多个选择器，包括更多可能的元素类型
         selectors = [
+            # 原始选择器
             f"xpath://span[contains(@class, 'universe-selector_depositForm__form__universeLabel') and text()='{type}']",
             f"xpath://span[contains(@class, 'universeLabel') and text()='{type}']",
             f"xpath://span[text()='{type}']",
+            # 扩展选择器 - button类型
+            f"xpath://button[contains(text(), '{type}')]",
+            f"xpath://button[contains(@class, 'universe') and contains(text(), '{type}')]",
+            # div类型
+            f"xpath://div[contains(@class, 'universe') and contains(text(), '{type}')]",
+            f"xpath://div[contains(text(), '{type}')]",
+            # label类型
+            f"xpath://label[contains(text(), '{type}')]",
+            # 通用文本匹配（不区分大小写）
+            f"xpath://*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{type.lower()}')]",
+            # 查找所有包含text的span元素
+            f"xpath://span[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{type.lower()}')]",
         ]
         
         gender_clicked = False
         for selector in selectors:
             try:
-                element = tab.ele(selector, timeout=5)
+                element = tab.ele(selector, timeout=3)
                 if element:
-                    element.click()
+                    # 尝试点击
+                    try:
+                        element.click()
+                    except:
+                        # 如果直接点击失败，尝试JavaScript点击
+                        tab.run_js('arguments[0].click()', element)
+                    
                     gender_clicked = True
-                    logger.debug(f'✅ 成功点击 Gender: {type}')
+                    logger.debug(f'✅ 成功点击 Gender: {type} (使用选择器: {selector[:50]}...)')
+                    tab.wait(2)  # 等待页面响应
                     break
-            except:
+            except Exception as e:
+                logger.debug(f'选择器失败: {selector[:50]}... - {str(e)[:50]}')
                 continue
+        
+        # 如果所有选择器都失败，尝试查找页面上所有可能的Gender选项
+        if not gender_clicked:
+            logger.warning(f'所有选择器都失败，尝试查找页面上所有Gender选项...')
+            try:
+                # 查找所有包含Gender文本的元素
+                all_elements = tab.eles('xpath://*[contains(text(), "Womenswear") or contains(text(), "Menswear") or contains(text(), "Girlswear") or contains(text(), "Boyswear")]')
+                logger.debug(f'找到 {len(all_elements)} 个可能的Gender元素')
+                
+                for elem in all_elements[:10]:  # 只检查前10个
+                    try:
+                        elem_text = elem.text.strip() if elem.text else ''
+                        if type.lower() in elem_text.lower():
+                            logger.debug(f'找到匹配元素: {elem_text}')
+                            try:
+                                elem.click()
+                            except:
+                                tab.run_js('arguments[0].click()', elem)
+                            gender_clicked = True
+                            logger.debug(f'✅ 成功点击 Gender: {type}')
+                            tab.wait(2)
+                            break
+                    except:
+                        continue
+            except Exception as e:
+                logger.debug(f'查找所有元素失败: {e}')
         
         if not gender_clicked:
             # 截屏：找不到元素
             error_screenshot = f'logs/error_gender_{int(time.time())}.png'
             tab.get_screenshot(error_screenshot)
+            
+            # 尝试输出页面HTML用于调试
+            try:
+                page_html = tab.html[:2000]  # 前2000字符
+                logger.debug(f'页面HTML片段: {page_html[:500]}')
+            except:
+                pass
+            
             logger.error(f'❌ 找不到 Gender 按钮，截屏: {error_screenshot}')
             raise Exception(f'Cannot find Gender button: {type}')
 
@@ -644,12 +761,35 @@ def goto_the_position(tab, type, cat, brand):
             'Heels': 'Heels',
             'Handbags': 'Handbags',
             'Bags': 'Handbags',
+            'Shoes': 'Trainers',  # 如果Category是Shoes，默认映射到Trainers
         }
         
         vc_category = category_mapping.get(cat, cat)
         
-        # 先用 JavaScript 设置值（更可靠）
-        category_select = tab.ele('css:select#preductAddCategory', timeout=10)
+        # 等待Category选择框出现
+        tab.wait(2)  # 等待页面响应
+        
+        # 尝试多个Category选择器
+        category_selectors = [
+            'css:select#preductAddCategory',
+            'css:#preductAddCategory',
+            'css:select[id*="Category"]',
+            'css:select[name*="category"]',
+            'css:select[class*="category"]',
+            'xpath://select[@id="preductAddCategory"]',
+            'xpath://select[contains(@id, "Category")]',
+        ]
+        
+        category_select = None
+        for selector in category_selectors:
+            try:
+                category_select = tab.ele(selector, timeout=5)
+                if category_select:
+                    logger.debug(f'✅ 找到Category选择框: {selector}')
+                    break
+            except:
+                continue
+        
         if category_select:
             # 先尝试用文本选择
             try:
@@ -659,25 +799,49 @@ def goto_the_position(tab, type, cat, brand):
                 # 如果失败，用 JavaScript 强制设置
                 logger.debug(f'Select by text 失败，用 JavaScript 设置...')
                 # 查找 value
-                options = category_select.eles('tag:option')
-                target_value = None
-                for opt in options:
-                    if opt.text.strip() == vc_category:
-                        target_value = opt.attr('value')
-                        break
-                
-                if target_value:
-                    tab.run_js(f'''
-                        const select = document.querySelector('#preductAddCategory');
-                        select.value = '{target_value}';
-                        select.dispatchEvent(new Event('change', {{ bubbles: true }}));
-                        select.dispatchEvent(new Event('input', {{ bubbles: true }}));
-                    ''')
-                    logger.debug(f'✅ 用 JavaScript 设置 Category: {vc_category} (value={target_value})')
-                else:
-                    logger.warning(f'⚠️  未找到 Category: {vc_category}')
+                try:
+                    options = category_select.eles('tag:option')
+                    target_value = None
+                    for opt in options:
+                        opt_text = opt.text.strip() if opt.text else ''
+                        if vc_category.lower() in opt_text.lower() or opt_text.lower() in vc_category.lower():
+                            target_value = opt.attr('value')
+                            logger.debug(f'找到匹配选项: {opt_text} -> {target_value}')
+                            break
+                    
+                    if target_value:
+                        # 使用选择框的实际ID或选择器
+                        select_id = category_select.attr('id') or 'preductAddCategory'
+                        tab.run_js(f'''
+                            const select = document.querySelector('#{select_id}');
+                            if (select) {{
+                                select.value = '{target_value}';
+                                select.dispatchEvent(new Event('change', {{ bubbles: true }}));
+                                select.dispatchEvent(new Event('input', {{ bubbles: true }}));
+                            }}
+                        ''')
+                        logger.debug(f'✅ 用 JavaScript 设置 Category: {vc_category} (value={target_value})')
+                    else:
+                        logger.warning(f'⚠️  未找到 Category: {vc_category}')
+                except Exception as e:
+                    logger.warning(f'⚠️  处理Category选项时出错: {e}')
         else:
-            logger.error('未找到 Category 下拉框')
+            # 如果找不到选择框，尝试截屏并输出页面信息用于调试
+            error_screenshot = f'logs/error_category_select_{int(time.time())}.png'
+            tab.get_screenshot(error_screenshot)
+            logger.error(f'❌ 未找到 Category 下拉框，截屏: {error_screenshot}')
+            
+            # 尝试输出页面上的所有select元素
+            try:
+                all_selects = tab.eles('css:select')
+                logger.debug(f'页面上找到 {len(all_selects)} 个select元素')
+                for i, sel in enumerate(all_selects[:5]):  # 只显示前5个
+                    sel_id = sel.attr('id') or '无ID'
+                    sel_name = sel.attr('name') or '无name'
+                    logger.debug(f'Select {i+1}: ID={sel_id}, Name={sel_name}')
+            except:
+                pass
+            
             raise Exception('Cannot find category select')
 
         tab.wait(2)
@@ -1858,8 +2022,13 @@ def publish_from_data(data):
         logger.info("💡 请确保已运行 start_chrome.command 启动脚本")
         
         try:
+            # 使用 ChromiumOptions 配置连接到已运行的 Chrome
+            from DrissionPage import ChromiumOptions
+            co = ChromiumOptions()
+            co.set_address('127.0.0.1:9222')  # 设置远程调试地址
+            
             # 使用 ChromiumPage 类连接到已运行的 Chrome
-            page = ChromiumPage(addr_or_opts='127.0.0.1:9222')
+            page = ChromiumPage(addr_or_opts=co)
             tab = page.get_tab()
             logger.success("✅ 成功连接到 Chrome")
         except Exception as e:
