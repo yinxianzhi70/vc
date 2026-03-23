@@ -130,3 +130,15 @@ pip install DrissionPage loguru openai python-dotenv
 3. **测试完整发布流程**
 4. **配置 Odoo 队列目录路径**（如果服务器和 Mac 不在同一机器）
 
+
+
+
+
+
+
+
+
+
+
+
+

@@ -46,3 +46,15 @@ echo "⏹️  停止所有服务:"
 echo "   pkill -f 'python.*monitor'; pkill -f 'python.*process_queue'"
 echo ""
 
+
+
+
+
+
+
+
+
+
+
+
+

@@ -13,564 +13,371 @@ from DrissionPage import ChromiumPage, ChromiumOptions, SessionPage, SessionOpti
 from dotenv import load_dotenv
 
 
+def _wait_cloudflare(tab, timeout=60):
+    """等待 Cloudflare 验证通过"""
+    logger.info("⏳ 检查 Cloudflare 验证...")
+    start = time.time()
+    while time.time() - start < timeout:
+        title = tab.title.lower() if tab.title else ''
+        if any(kw in title for kw in ['just a moment', 'checking your browser', 'please wait']):
+            elapsed = int(time.time() - start)
+            logger.info(f"⏳ Cloudflare 验证中... ({elapsed}s/{timeout}s)")
+            tab.wait(2)
+        else:
+            logger.info("✅ Cloudflare 验证通过")
+            return True
+    logger.error(f"❌ Cloudflare 验证超时 ({timeout}s)")
+    return False
+
+
+def _dismiss_popups(tab):
+    """处理 Cookie 弹窗和购物偏好弹窗"""
+    # Cookie 弹窗
+    cookie_selectors = [
+        'css:button[id="onetrust-accept-btn-handler"]',
+        'xpath://button[contains(text(), "Accept")]',
+        'xpath://button[contains(text(), "Accept all")]',
+    ]
+    for selector in cookie_selectors:
+        try:
+            btn = tab.ele(selector, timeout=3)
+            if btn:
+                btn.click()
+                logger.debug(f"✅ 已处理 Cookie 弹窗: {selector}")
+                tab.wait(1)
+                break
+        except:
+            continue
+
+    # 购物偏好弹窗 (有时会出现 "Select shopping preference" → Continue)
+    try:
+        pref_btn = tab.ele('xpath://button[contains(text(), "Continue")]', timeout=3)
+        if pref_btn:
+            pref_btn.click()
+            logger.debug("✅ 已处理购物偏好弹窗")
+            tab.wait(2)
+    except:
+        pass
+
+
 def login(tab, username, password, max_retries=3):
-    """登录到 Vestiaire Collective"""
-    
-    # 首先检查是否已经登录（使用Profile 7可能已有Google登录状态）
+    """登录到 Vestiaire Collective（纯邮箱+密码方式）"""
+
+    # ── 第0步：检查是否已经登录 ──
     logger.info("检查是否已经登录...")
     try:
-        # 访问首页
         tab.get('https://www.vestiairecollective.com/')
-        tab.wait(15)
-        
-        # 检查是否已经登录
-        already_logged_in_indicators = [
+        tab.wait(10)
+        _wait_cloudflare(tab)
+        _dismiss_popups(tab)
+
+        logged_in_indicators = [
             'xpath://a[contains(@href, "/sell")]',
             'xpath://button[contains(text(), "Sell")]',
-            'css:[data-testid*="sell"]',
-            'xpath://div[contains(@class, "user-menu")]'
+            'css:a[href*="my-account"]',
+            'css:a[href*="profile"]',
         ]
-        
-        for indicator in already_logged_in_indicators:
+        for ind in logged_in_indicators:
             try:
-                if tab.ele(indicator, timeout=3):
-                    logger.info(f"检测到已登录状态（Profile已有登录信息）: {indicator}")
-                    logger.info("无需重新登录，直接使用现有登录状态")
+                if tab.ele(ind, timeout=3):
+                    logger.info(f"✅ 已登录（检测到: {ind}），无需重新登录")
                     return True
             except:
                 continue
-                
-        logger.info("未检测到登录状态，开始登录流程")
+        logger.info("未检测到已登录状态，开始登录流程")
     except Exception as e:
         logger.warning(f"检查登录状态时出错: {e}")
-    
+
+    # ── 开始登录重试循环 ──
     for attempt in range(max_retries):
         try:
-            logger.info(f'开始登录流程 (第{attempt + 1}次尝试)')
+            logger.info(f'🔐 开始登录 (第 {attempt + 1}/{max_retries} 次尝试)')
+
+            # ── 第1步：访问首页并等待 Cloudflare ──
             tab.get('https://www.vestiairecollective.com/')
-            tab.wait(20)  # 增加初始等待时间到20秒
-            
-            # 记录当前页面URL和状态
-            logger.debug(f'当前页面URL: {tab.url}')
+            tab.wait(8)
+            if not _wait_cloudflare(tab):
+                logger.warning("Cloudflare 未通过，重试...")
+                tab.wait(10)
+                continue
+
+            _dismiss_popups(tab)
+            tab.wait(2)
+
+            logger.debug(f'当前 URL: {tab.url}')
             logger.debug(f'页面标题: {tab.title}')
-            logger.debug(f'页面就绪状态: {tab.run_js("return document.readyState")}')
-            
-            # 处理Cookie接受按钮
-            cookie_selectors = [
-                'css:button[id="onetrust-accept-btn-handler"]',
-                'xpath://button[contains(text(), "Accept")]',
-                'xpath://button[contains(text(), "Accept all")]',
-                'css:button[class*="cookie"]',
-                'css:button[class*="accept"]',
-                'xpath://button[contains(@class, "cookie")]',
-                'xpath://button[contains(@class, "accept")]'
-            ]
-            
-            cookie_clicked = False
-            for selector in cookie_selectors:
-                try:
-                    if cookie_btn := tab.ele(selector, timeout=5):
-                        logger.debug(f"找到cookie按钮: {selector}")
-                        # 确保按钮可见
-                        tab.run_js('arguments[0].scrollIntoView({behavior: "smooth", block: "center"})', cookie_btn)
-                        tab.wait(1)
-                        
-                        # 尝试多种点击方式
-                        try:
-                            cookie_btn.click()
-                            cookie_clicked = True
-                            break
-                        except Exception as e:
-                            logger.debug(f"直接点击失败，尝试JavaScript点击: {e}")
-                            try:
-                                tab.run_js('arguments[0].click()', cookie_btn)
-                                cookie_clicked = True
-                                break
-                            except Exception as e:
-                                logger.debug(f"JavaScript点击失败: {e}")
-                                continue
-                except Exception as e:
-                    logger.debug(f"尝试cookie按钮 {selector} 失败: {e}")
-                    continue
-                
-            if not cookie_clicked:
-                logger.warning("未找到或无法点击cookie按钮，继续执行")
-            
-            # 处理购物偏好弹窗 (Select shopping preference)
-            tab.wait(3)
-            shopping_preference_selectors = [
-                'xpath://button[contains(text(), "Continue")]',
-                'css:button[class*="continue"]',
-                'xpath://div[contains(text(), "Select shopping preference")]//following::button[contains(text(), "Continue")]'
-            ]
-            
-            shopping_preference_clicked = False
-            for selector in shopping_preference_selectors:
-                try:
-                    if pref_btn := tab.ele(selector, timeout=5):
-                        logger.debug(f"找到购物偏好Continue按钮: {selector}")
-                        # 确保按钮可见
-                        tab.run_js('arguments[0].scrollIntoView({behavior: "smooth", block: "center"})', pref_btn)
-                        tab.wait(1)
-                        
-                        # 尝试多种点击方式
-                        try:
-                            pref_btn.click()
-                            shopping_preference_clicked = True
-                            logger.info("已点击购物偏好Continue按钮")
-                            tab.wait(3)
-                            break
-                        except Exception as e:
-                            logger.debug(f"直接点击失败，尝试JavaScript点击: {e}")
-                            try:
-                                tab.run_js('arguments[0].click()', pref_btn)
-                                shopping_preference_clicked = True
-                                logger.info("已通过JavaScript点击购物偏好Continue按钮")
-                                tab.wait(3)
-                                break
-                            except Exception as e:
-                                logger.debug(f"JavaScript点击失败: {e}")
-                                continue
-                except Exception as e:
-                    logger.debug(f"尝试购物偏好按钮 {selector} 失败: {e}")
-                    continue
-                
-            if not shopping_preference_clicked:
-                logger.warning("未找到或无法点击购物偏好Continue按钮，可能不需要处理")
-            
-            # 点击登录按钮
-            login_button_selectors = [
-                'css:button[id="user-login"]',
+
+            # ── 第2步：点击 "Sign in" 打开登录模态框 ──
+            logger.info("步骤 1: 点击 Sign in...")
+            sign_in_selectors = [
+                'xpath://span[text()="Sign in"]',
+                'xpath://a[text()="Sign in"]',
+                'xpath://button[text()="Sign in"]',
+                'css:a[href*="login"]',
                 'css:button[data-testid="header-login-button"]',
-                'xpath://button[contains(@class, "login")]',
+                'xpath://button[contains(text(), "Sign in")]',
+                'xpath://a[contains(text(), "Sign in")]',
                 'xpath://button[contains(text(), "Log in")]',
-                'css:button[class*="login"]',
-                'xpath://a[contains(@class, "login")]',
-                'xpath://a[contains(text(), "Log in")]',
-                'css:button[class*="HeaderLoginButton"]'
             ]
-            
-            login_button = None
-            for selector in login_button_selectors:
+
+            sign_in_btn = None
+            for selector in sign_in_selectors:
                 try:
-                    if login_button := tab.wait.ele_displayed(selector, timeout=20):
-                        logger.debug(f"找到登录按钮: {selector}")
-                        # 确保按钮可见和可点击
-                        tab.run_js('arguments[0].scrollIntoView({behavior: "smooth", block: "center"})', login_button)
-                        tab.wait(5)
+                    sign_in_btn = tab.wait.ele_displayed(selector, timeout=10)
+                    if sign_in_btn:
+                        logger.debug(f"找到 Sign in 按钮: {selector}")
                         break
-                except Exception as e:
-                    logger.debug(f"尝试登录按钮 {selector} 失败: {e}")
+                except:
                     continue
-                    
-            if not login_button:
-                logger.error("未找到登录按钮")
-                logger.debug(f"页面内容: {tab.html}")
+
+            if not sign_in_btn:
+                logger.error("❌ 未找到 Sign in 按钮")
                 if attempt < max_retries - 1:
-                    logger.info("等待30秒后重试...")
-                    tab.wait(30)
+                    tab.wait(15)
                     continue
-                raise Exception("未找到登录按钮")
-                
-            login_button.click()
-            tab.wait(10)  # 等待登录弹窗加载
-            
-            # 使用Google登录
-            logger.info("使用Google账号登录方式")
-            
-            # 查找并点击Google登录按钮
-            google_login_selectors = [
-                'xpath://button[contains(., "Google")]',
-                'xpath://button[contains(@class, "google")]',
-                'css:button[class*="google"]',
-                'xpath://div[contains(@class, "google")]//button',
-                'xpath://*[contains(text(), "Continue with Google")]',
-                'xpath://button[contains(text(), "Continue with Google")]',
-                'css:[data-testid*="google"]',
-                'xpath://button[.//img[contains(@src, "google")]]'
-            ]
-            
-            google_button = None
-            for selector in google_login_selectors:
-                try:
-                    if google_button := tab.wait.ele_displayed(selector, timeout=10):
-                        logger.debug(f"找到Google登录按钮: {selector}")
-                        break
-                except Exception as e:
-                    logger.debug(f"尝试Google登录按钮 {selector} 失败: {e}")
-                    continue
-            
-            if not google_button:
-                logger.error("未找到Google登录按钮")
-                logger.debug(f"页面内容: {tab.html}")
-                if attempt < max_retries - 1:
-                    logger.info("等待30秒后重试...")
-                    tab.wait(30)
-                    continue
-                raise Exception("未找到Google登录按钮")
-            
-            # 点击Google登录按钮
-            logger.info("点击Google登录按钮")
-            google_button.click()
-            tab.wait(15)  # 等待Google登录页面加载
-            
-            # Google登录页面应该会自动使用已登录的Chrome profile (info@trivesa.it)
-            # 等待登录完成并返回到主页面
-            logger.info("等待Google登录完成...")
-            tab.wait(20)
-            
-            # 检查是否需要选择Google账号或确认
-            try:
-                # 可能需要选择账号
-                account_selectors = [
-                    f'xpath://div[contains(text(), "{username}")]',
-                    'xpath://div[@data-identifier]',
-                    'css:[data-identifier]'
-                ]
-                
-                for selector in account_selectors:
-                    try:
-                        if account := tab.ele(selector, timeout=5):
-                            logger.info(f"找到Google账号选项，点击: {selector}")
-                            account.click()
-                            tab.wait(10)
-                            break
-                    except:
-                        continue
-            except Exception as e:
-                logger.debug(f"未找到需要选择的Google账号: {e}")
-            
-            # 成功通过Google登录后，直接返回成功
-            logger.info("Google登录流程已完成")
-            
-            # 记录登录表单页面URL
-            logger.debug(f'登录表单页面URL: {tab.url}')
-            logger.debug(f'登录表单页面HTML: {tab.html}')
-            
-            # 输入邮箱
+                raise Exception("未找到 Sign in 按钮")
+
+            sign_in_btn.click()
+            logger.info("✅ 已点击 Sign in")
+            tab.wait(5)
+
+            # ── 第3步：在模态框中输入邮箱 ──
+            logger.info("步骤 2: 输入邮箱...")
             email_selectors = [
                 'css:input[id="welcomeEmail"]',
                 'css:input[type="email"]',
                 'xpath://input[@placeholder="Email"]',
                 'css:input[name="email"]',
-                'xpath://input[contains(@class, "email")]'
             ]
-            
+
             email_input = None
             for selector in email_selectors:
                 try:
-                    if email_input := tab.wait.ele_displayed(selector, timeout=20):
+                    email_input = tab.wait.ele_displayed(selector, timeout=15)
+                    if email_input:
                         logger.debug(f"找到邮箱输入框: {selector}")
                         break
-                except Exception as e:
-                    logger.debug(f"尝试邮箱输入框 {selector} 失败: {e}")
+                except:
                     continue
-                    
+
             if not email_input:
-                logger.error("未找到邮箱输入框")
-                logger.debug(f"页面内容: {tab.html}")
+                logger.error("❌ 未找到邮箱输入框")
                 if attempt < max_retries - 1:
-                    logger.info("等待30秒后重试...")
-                    tab.wait(30)
+                    tab.wait(15)
                     continue
                 raise Exception("未找到邮箱输入框")
-                
-            # 确保邮箱输入框可见和可交互
-            tab.run_js('arguments[0].scrollIntoView({behavior: "smooth", block: "center"})', email_input)
-            tab.wait(5)
-            
-            # 清除并输入邮箱
+
             email_input.clear()
+            tab.wait(0.5)
             email_input.input(username)
-            logger.debug(f"输入邮箱: {username}")
-            
-            # 等待页面稳定
-            tab.wait(3)
-            
-            # 点击继续按钮
+            logger.info(f"✅ 已输入邮箱: {username}")
+            tab.wait(2)
+
+            # ── 第4步：点击 Continue ──
+            logger.info("步骤 3: 点击 Continue...")
             continue_selectors = [
                 'css:button[data-testid="welcome_continue_btn"]',
                 'xpath://button[text()="Continue"]',
                 'xpath://button[contains(text(), "Continue")]',
-                'xpath://button[contains(@class, "continue")]',
-                'css:button[class*="continue"]',
-                'xpath://button[contains(@class, "submit")]',
                 'css:button[type="submit"]',
-                'xpath://form//button',
-                'css:form button'
             ]
-            
-            continue_button = None
+
+            continue_btn = None
             for selector in continue_selectors:
                 try:
-                    if continue_button := tab.wait.ele_displayed(selector, timeout=10):
-                        logger.debug(f"找到继续按钮: {selector}")
+                    continue_btn = tab.wait.ele_displayed(selector, timeout=10)
+                    if continue_btn:
+                        logger.debug(f"找到 Continue 按钮: {selector}")
                         break
-                except Exception as e:
-                    logger.debug(f"尝试继续按钮 {selector} 失败: {e}")
+                except:
                     continue
-                    
-            if not continue_button:
-                logger.warning("未找到继续按钮，尝试使用JavaScript查找并点击")
-                try:
-                    # 尝试使用JavaScript直接查找并点击按钮
-                    js_click_result = tab.run_js('''
-                        // 查找包含"Continue"文本的按钮
-                        let buttons = Array.from(document.querySelectorAll('button'));
-                        let continueBtn = buttons.find(btn => 
-                            btn.textContent.trim().toLowerCase() === 'continue' || 
-                            btn.innerText.trim().toLowerCase() === 'continue'
-                        );
-                        if (continueBtn) {
-                            continueBtn.click();
-                            return true;
-                        }
-                        // 如果没找到，尝试查找form中的submit按钮
-                        let submitBtn = document.querySelector('form button[type="submit"]');
-                        if (submitBtn) {
-                            submitBtn.click();
-                            return true;
-                        }
-                        // 最后尝试找form中的任何按钮
-                        let formBtn = document.querySelector('form button');
-                        if (formBtn) {
-                            formBtn.click();
-                            return true;
-                        }
-                        return false;
-                    ''')
-                    if js_click_result:
-                        logger.info("通过JavaScript成功点击继续按钮")
-                        tab.wait(15)
-                    else:
-                        logger.error("未找到继续按钮")
-                        logger.debug(f"页面内容: {tab.html}")
-                        if attempt < max_retries - 1:
-                            logger.info("等待30秒后重试...")
-                            tab.wait(30)
-                            continue
-                        raise Exception("未找到继续按钮")
-                except Exception as e:
-                    logger.error(f"JavaScript点击继续按钮失败: {e}")
+
+            if not continue_btn:
+                # JavaScript 后备
+                logger.warning("未找到 Continue 按钮，尝试 JavaScript 点击")
+                clicked = tab.run_js('''
+                    let btns = Array.from(document.querySelectorAll('button'));
+                    let btn = btns.find(b => b.textContent.trim().toLowerCase() === 'continue');
+                    if (!btn) btn = document.querySelector('form button[type="submit"]');
+                    if (btn) { btn.click(); return true; }
+                    return false;
+                ''')
+                if not clicked:
+                    logger.error("❌ 无法点击 Continue")
                     if attempt < max_retries - 1:
-                        logger.info("等待30秒后重试...")
-                        tab.wait(30)
+                        tab.wait(15)
                         continue
-                    raise Exception("无法点击继续按钮")
+                    raise Exception("无法点击 Continue")
             else:
                 try:
-                    continue_button.click()
-                    logger.info("点击继续按钮")
-                    tab.wait(15)  # 增加等待时间到15秒
-                except Exception as e:
-                    logger.warning(f"直接点击失败，尝试JavaScript点击: {e}")
-                    try:
-                        tab.run_js('arguments[0].click()', continue_button)
-                        logger.info("通过JavaScript点击继续按钮")
-                        tab.wait(15)
-                    except Exception as e2:
-                        logger.error(f"JavaScript点击也失败: {e2}")
-                        if attempt < max_retries - 1:
-                            logger.info("等待30秒后重试...")
-                            tab.wait(30)
-                            continue
-                        raise Exception("无法点击继续按钮")
-            
-            # 等待页面加载完成
-            try:
-                tab.wait.ele_displayed('css:div[role="dialog"]', timeout=25)
-                logger.debug("登录对话框已加载")
-            except Exception as e:
-                logger.warning(f"等待登录对话框超时: {e}")
-                logger.debug(f"当前页面内容: {tab.html}")
-            
-            # 记录密码输入页面URL和状态
-            logger.debug(f'密码输入页面URL: {tab.url}')
-            logger.debug(f'页面标题: {tab.title}')
-            logger.debug(f'页面就绪状态: {tab.run_js("return document.readyState")}')
-            
-            # 输入密码
+                    continue_btn.click()
+                except Exception:
+                    tab.run_js('arguments[0].click()', continue_btn)
+
+            logger.info("✅ 已点击 Continue")
+            tab.wait(8)  # 等待密码输入框出现
+
+            # ── 第5步：输入密码 ──
+            logger.info("步骤 4: 输入密码...")
             password_selectors = [
                 'css:input[id="loginPassword"]',
                 'css:input[type="password"]',
                 'css:input[name="password"]',
-                'xpath://input[@placeholder="Password"]',
                 'xpath://input[@type="password"]',
-                'css:input[class*="password"]'
             ]
-            
-            # 记录当前页面内容以便调试
-            logger.debug(f"当前页面HTML: {tab.html}")
-            
+
             password_input = None
             for selector in password_selectors:
                 try:
-                    if password_input := tab.wait.ele_displayed(selector, timeout=20):
+                    password_input = tab.wait.ele_displayed(selector, timeout=15)
+                    if password_input:
                         logger.debug(f"找到密码输入框: {selector}")
                         break
-                    else:
-                        logger.debug(f"未找到密码输入框: {selector}")
-                except Exception as e:
-                    logger.debug(f"尝试选择器 {selector} 失败: {e}")
+                except:
                     continue
-                    
+
             if not password_input:
-                # 尝试使用JavaScript定位密码输入框
-                try:
-                    js_result = tab.run_js('''
-                        let input = document.querySelector('input[type="password"]');
-                        if (!input) input = document.querySelector('input#loginPassword');
-                        if (!input) {
-                            input = Array.from(document.querySelectorAll('input')).find(el => 
-                                el.placeholder && el.placeholder.toLowerCase().includes('password')
-                            );
-                        }
-                        if (input) {
-                            input.style.display = 'block';
-                            input.style.visibility = 'visible';
-                            input.style.opacity = '1';
-                            return true;
-                        }
-                        return false;
-                    ''')
-                    if js_result:
-                        logger.debug("通过JavaScript找到并显示密码输入框")
-                        # 重新尝试获取密码输入框
-                        for selector in password_selectors:
-                            try:
-                                if password_input := tab.wait.ele_displayed(selector, timeout=10):
-                                    logger.debug(f"通过JavaScript后找到密码输入框: {selector}")
-                                    break
-                            except Exception as e:
-                                logger.debug(f"JavaScript后尝试选择器 {selector} 失败: {e}")
-                                continue
-                except Exception as e:
-                    logger.debug(f"JavaScript定位密码输入框失败: {e}")
-                                
+                # JavaScript 后备：强制显示隐藏的密码框
+                tab.run_js('''
+                    let inp = document.querySelector('input[type="password"]');
+                    if (inp) {
+                        inp.style.display = 'block';
+                        inp.style.visibility = 'visible';
+                        inp.style.opacity = '1';
+                    }
+                ''')
+                tab.wait(2)
+                for selector in password_selectors:
+                    try:
+                        password_input = tab.wait.ele_displayed(selector, timeout=5)
+                        if password_input:
+                            break
+                    except:
+                        continue
+
             if not password_input:
-                logger.error("未找到密码输入框")
-                logger.debug(f"页面内容: {tab.html}")
+                logger.error("❌ 未找到密码输入框")
                 if attempt < max_retries - 1:
-                    logger.info("等待30秒后重试...")
-                    tab.wait(30)
+                    tab.wait(15)
                     continue
                 raise Exception("未找到密码输入框")
-                
-            # 确保密码输入框可见和可交互
-            tab.run_js('arguments[0].scrollIntoView({behavior: "smooth", block: "center"})', password_input)
-            tab.wait(5)
-            
-            # 清除并输入密码
+
             password_input.clear()
+            tab.wait(0.5)
             password_input.input(password)
-            logger.debug("输入密码完成")
-            tab.wait(10)  # 增加等待时间到10秒
-            
-            # 点击登录按钮
+            logger.info("✅ 已输入密码")
+            tab.wait(3)
+
+            # ── 第6步：点击 Log in ──
+            logger.info("步骤 5: 点击 Log in...")
             submit_selectors = [
-                'css:button[type="submit"]',
+                'xpath://button[text()="Log in"]',
                 'xpath://button[contains(text(), "Log in")]',
-                'xpath://button[contains(@class, "submit")]',
-                'css:button[class*="submit"]',
+                'css:button[type="submit"]',
                 'css:button[data-testid="login-submit"]',
-                'xpath://button[contains(@class, "login")]',
-                'xpath://button[contains(@class, "btn-login")]'
             ]
-            
-            submit_button = None
+
+            submit_btn = None
             for selector in submit_selectors:
                 try:
-                    if submit_button := tab.wait.ele_displayed(selector, timeout=30):
-                        logger.debug(f"找到提交按钮: {selector}")
-                        # 确保按钮可见
-                        tab.run_js('arguments[0].scrollIntoView({behavior: "smooth", block: "center"})', submit_button)
-                        tab.wait(5)
+                    submit_btn = tab.wait.ele_displayed(selector, timeout=10)
+                    if submit_btn:
+                        logger.debug(f"找到 Log in 按钮: {selector}")
                         break
-                except Exception as e:
-                    logger.debug(f"尝试提交按钮 {selector} 失败: {e}")
+                except:
                     continue
-                    
-            if not submit_button:
-                logger.error("未找到提交按钮")
-                logger.debug(f"页面内容: {tab.html}")
-                if attempt < max_retries - 1:
-                    logger.info("等待30秒后重试...")
-                    tab.wait(30)
-                    continue
-                raise Exception("未找到提交按钮")
-                
-            # 尝试多种点击方式
-            try:
-                submit_button.click()
-            except Exception as e:
-                logger.debug(f"直接点击失败，尝试JavaScript点击: {e}")
+
+            if submit_btn:
                 try:
-                    tab.run_js('arguments[0].click()', submit_button)
-                except Exception as e:
-                    logger.debug(f"JavaScript点击失败: {e}")
-                    # 尝试模拟回车键
-                    tab.keyboard.press(Keys.ENTER)
-            
-            # 等待登录完成，检查多个可能的成功标志
+                    submit_btn.click()
+                except Exception:
+                    tab.run_js('arguments[0].click()', submit_btn)
+            else:
+                # 后备：按回车
+                logger.warning("未找到 Log in 按钮，模拟回车")
+                password_input.input('\n')
+
+            logger.info("✅ 已点击 Log in，等待登录完成...")
+            tab.wait(15)
+
+            # ── 第7步：验证登录成功 ──
+            logger.info("步骤 6: 验证登录...")
+
+            # 先检查 URL 是否已跳转离开登录页
+            current_url = tab.url
+            logger.debug(f"当前 URL: {current_url}")
+
+            # 再查找已登录标志
             success_indicators = [
-                'css:div[class*="user-menu"]',
-                'xpath://div[contains(@class, "user-menu")]',
-                'css:a[href*="account"]',
-                'xpath://a[contains(@href, "account")]',
-                'css:button[data-testid="header-login-button"]',
-                'xpath://button[contains(@class, "login")]'
+                'xpath://a[contains(@href, "/sell")]',
+                'css:a[href*="my-account"]',
+                'css:a[href*="profile"]',
+                'xpath://button[contains(text(), "Sell")]',
+                'xpath://span[contains(text(), "Sell an item")]',
             ]
-            
+
             login_success = False
-            for indicator in success_indicators:
+            for ind in success_indicators:
                 try:
-                    if tab.wait.ele_displayed(indicator, timeout=30):
-                        logger.info("登录成功")
+                    if tab.ele(ind, timeout=5):
                         login_success = True
                         break
-                except Exception as e:
-                    logger.debug(f"检查登录成功指示器 {indicator} 失败: {e}")
+                except:
                     continue
-            
+
+            # 如果在当前页面没找到，尝试访问首页再检查
             if not login_success:
-                # 检查是否有错误消息
-                error_indicators = [
-                    'css:div[class*="error"]',
-                    'xpath://div[contains(@class, "error")]',
-                    'css:div[class*="alert"]',
-                    'xpath://div[contains(@class, "alert")]'
-                ]
-                
-                for indicator in error_indicators:
+                tab.get('https://www.vestiairecollective.com/')
+                tab.wait(8)
+                _wait_cloudflare(tab)
+                for ind in success_indicators:
                     try:
-                        if error_ele := tab.ele(indicator, timeout=5):
-                            error_text = error_ele.text
-                            logger.error(f"登录失败，错误信息: {error_text}")
-                            raise Exception(f"登录失败: {error_text}")
-                    except Exception as e:
+                        if tab.ele(ind, timeout=5):
+                            login_success = True
+                            break
+                    except:
                         continue
-                
-                # 如果没有找到错误消息，检查页面状态
-                logger.debug(f"当前页面URL: {tab.url}")
-                logger.debug(f"页面标题: {tab.title}")
-                logger.debug(f"页面HTML: {tab.html}")
-                
+
+            # 最终检查：页面上是否还有 "Sign in" 按钮
+            if not login_success:
+                try:
+                    has_sign_in = tab.run_js('''
+                        let els = Array.from(document.querySelectorAll('a, button, span'));
+                        return els.some(el => el.textContent.trim() === 'Sign in');
+                    ''')
+                    if not has_sign_in:
+                        login_success = True
+                        logger.info("未检测到 Sign in 按钮，判定为已登录")
+                except:
+                    pass
+
+            if login_success:
+                logger.info('=' * 50)
+                logger.info('✅✅✅ 登录成功！ ✅✅✅')
+                logger.info('=' * 50)
+                return True
+            else:
+                # 检查错误消息
+                try:
+                    error_el = tab.ele('css:div[class*="error"], div[class*="alert"]', timeout=3)
+                    if error_el:
+                        logger.error(f"登录失败，错误信息: {error_el.text}")
+                except:
+                    pass
+                logger.error("❌ 登录失败，未检测到成功标志")
                 if attempt < max_retries - 1:
-                    logger.info("等待30秒后重试...")
-                    tab.wait(30)
+                    tab.wait(15)
                     continue
-                raise Exception("登录失败，未检测到成功标志")
-            
-            return True
+                raise Exception("登录失败")
 
         except Exception as e:
             logger.error(f"登录过程中出错: {e}")
             if attempt < max_retries - 1:
-                logger.info("等待30秒后重试...")
-            tab.wait(30)
+                logger.info(f"等待 15 秒后重试...")
+                tab.wait(15)
             continue
-            raise Exception(f"登录失败: {e}")
-            
+
+    logger.error(f"❌ 登录失败，已尝试 {max_retries} 次")
     return False
 
 
@@ -592,26 +399,53 @@ def goto_the_position(tab, type, cat, brand):
         tab.get_screenshot(screenshot_path)
         logger.debug(f'Category page is loaded, screenshot: {screenshot_path}')
 
-        # 处理Cookie同意弹窗（优先处理，可能阻塞其他操作）
+        # 处理Welcome弹窗（优先处理，在最顶层）
         try:
+            welcome_close_selectors = [
+                'xpath://button[contains(@aria-label, "Close")]',
+                'xpath://button[contains(@class, "close")]//ancestor::div[contains(@class, "welcome") or contains(@class, "Welcome") or contains(@class, "popin")]',
+                'css:div[class*="popin"] button[class*="close"]',
+                'css:div[class*="welcome"] button',
+                'xpath://div[contains(@class, "ModalContainer")]//button',
+                'xpath://button[contains(text(), "×")]',
+                'css:button[aria-label="Close"]',
+            ]
+            
+            welcome_closed = False
+            for selector in welcome_close_selectors:
+                try:
+                    close_button = tab.ele(selector, timeout=2)
+                    if close_button and close_button.attr('type') != 'submit':
+                        close_button.click()
+                        welcome_closed = True
+                        logger.debug(f'✅ 已关闭Welcome弹窗（关闭按钮）')
+                        tab.wait(2)
+                        break
+                except:
+                    continue
+        except Exception as e:
+            logger.debug(f'处理Welcome弹窗关闭按钮时出错: {e}')
+
+        # 处理Cookie同意弹窗
+        try:
+            # 先尝试Accept按钮（黑色按钮在右侧）
             cookie_selectors = [
+                'xpath://button[text()="Accept"]',
+                'xpath://button[contains(text(), "Accept")]',
                 'css:button[class*="accept"]',
                 'css:button[id*="accept"]',
-                'xpath://button[contains(text(), "Accept")]',
                 'xpath://button[contains(text(), "接受")]',
-                'css:button[class*="cookie"]',
-                'xpath://button[contains(@class, "cookie") and contains(text(), "Accept")]',
             ]
             
             cookie_clicked = False
             for selector in cookie_selectors:
                 try:
-                    cookie_button = tab.ele(selector, timeout=3)
+                    cookie_button = tab.ele(selector, timeout=2)
                     if cookie_button:
                         cookie_button.click()
                         cookie_clicked = True
-                        logger.debug(f'✅ 已点击Cookie同意按钮')
-                        tab.wait(1)
+                        logger.debug(f'✅ 已点击Cookie Accept按钮')
+                        tab.wait(2)
                         break
                 except:
                     continue
@@ -623,42 +457,19 @@ def goto_the_position(tab, type, cat, brand):
                     if continue_link:
                         continue_link.click()
                         logger.debug(f'✅ 已点击"Continue without accepting"')
-                        tab.wait(1)
+                        tab.wait(2)
                 except:
                     pass
         except Exception as e:
-            logger.debug(f'处理Cookie弹窗时出错（可能不存在）: {e}')
+            logger.debug(f'处理Cookie弹窗时出错: {e}')
 
         # 处理隐私政策弹窗
         try:
-            tab.ele('button#popin_tc_privacy_button_2', timeout=5).click()
-            logger.debug('Click privacy button')
+            tab.ele('button#popin_tc_privacy_button_2', timeout=3).click()
+            logger.debug('✅ 已处理隐私政策弹窗')
             tab.wait(1)
         except:
             pass
-
-        # 处理Welcome弹窗（登录提示）
-        try:
-            welcome_selectors = [
-                'css:button[class*="close"]',
-                'css:button[class*="dismiss"]',
-                'xpath://button[contains(text(), "Continue")]',
-                'xpath://button[contains(text(), "Close")]',
-                'css:button[aria-label*="close"]',
-            ]
-            
-            for selector in welcome_selectors:
-                try:
-                    welcome_button = tab.ele(selector, timeout=2)
-                    if welcome_button:
-                        welcome_button.click()
-                        logger.debug(f'✅ 已关闭Welcome弹窗')
-                        tab.wait(1)
-                        break
-                except:
-                    continue
-        except Exception as e:
-            logger.debug(f'处理Welcome弹窗时出错（可能不存在）: {e}')
 
         # Choose the category
         tab.wait.ele_displayed("css:input[data-role='search']", timeout=15)
